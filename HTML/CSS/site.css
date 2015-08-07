@@ -1,0 +1,15 @@
+
+
+.container .left{
+	float: left;
+	width: 200px;
+	}
+
+.container .right{
+	float:right;
+	width: 300px;
+}
+.container .center{
+	margin-left: 210px;
+	margin-right:310px;
+	}

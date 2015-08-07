@@ -15,6 +15,7 @@
 		<link class="usemin" rel="stylesheet" href="../../CSS/b898e9d6.css">
 
 		<link class="usemin" rel="stylesheet" href="../../CSS/04cb1d78.css">
+		<link rel="stylesheet" type="text/css" href="../../css/site.css" />
 
 		<script class="usemin" src="../../JS/66c19641.js"></script>
 
@@ -29,11 +30,21 @@
 		<script type="text/JavaScript" src="../../JS/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
 		<script type="text/JavaScript" src="../../JS/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
 
+		<script type="text/JavaScript" src="../../JS/jqplot/plugins/jqplot.pieRenderer.min.js"></script>
+		<script type="text/JavaScript" src="../../JS/jqplot/plugins/jqplot.donutRenderer.min.js"></script>
+
 		<script>
 			$(document).ready(function() {
 				var line1 = [[7, '菜品1'], [9, '菜品2'], [15, '菜品3'], [12, '菜品4'], [4, '菜品5'], [3, '菜品6'], [10, '菜品7']];
+				var line2 = [0, 0];
+				var titles = $("input[name='sales']:checked").next('label').text();
+				for (var i = 0; i < line1.length; i++) {
+					line3 = [line1[i][1], line1[i][0]];
+
+					line2.unshift(line3);
+				}
 				var plot1 = $.jqplot('chart1', [line1], {
-					title : '销售金额',
+					title : titles,
 					seriesDefaults : {
 						renderer : $.jqplot.BarRenderer,
 						shadowAngle : 135,
@@ -44,11 +55,7 @@
 							show : true
 						}
 					},
-					legend : {
-						show : true,
-						location : 'e',
-						placement : 'outside'
-					},
+
 					axes : {
 						yaxis : {
 							renderer : $.jqplot.CategoryAxisRenderer
@@ -56,12 +63,24 @@
 					}
 				});
 				$('#chart1').bind('jqplotDataHighlight', function(ev, seriesIndex, pointIndex, data) {
-					$('#info2').html('菜品: ' + seriesIndex + ', 排名: ' + pointIndex + ', 销量: ' + data);
+					$('#info2').html('菜品: ' + line1[pointIndex][1] + ', 排名: ' + data[1] + ', 销量: ' + data[0]);
 				});
 
-				$('#chart1').bind('jqplotDataUnhighlight', function(ev) {
-					$('#info2').html('没有指定菜品');
+				
+
+				var plot2 = $.jqplot('pieChart', [line2], {
+					seriesDefaults : {
+						renderer : $.jqplot.PieRenderer,
+						rendererOptions : {
+							showDataLabels : true
+						}
+					},
+					legend : {
+						show : true,
+						location : 'e'
+					}
 				});
+
 			});
 		</script>
 
@@ -141,7 +160,7 @@
 			</div>
 		</div>
 		<div class="container">
-			<div class="report">
+			<div class="left">
 				<label>分类:&nbsp;</label>
 				<select >
 					<option value="type" selected="selected">菜品类别</option>
@@ -158,37 +177,24 @@
 				<br />
 				<br />
 				<form>
-					<input type="radio" name="sales" value="amount" checked="checked" />
-					销售金额
+					<input type="radio" name="sales" id="amount" value="amount" checked="checked" />&nbsp;<label for="amount">销售金额</label>
+					
 					<br />
-					<input type="radio" name="sales" value="qty" />
-					销售份数
+					<input type="radio" name="sales" id="qty" value="qty" />&nbsp;<label for="qyt">销售份数</label>
+					
 				</form>
 			</div>
 
-			<div class="graph" id="chart1">
+			
+			<div class="right" id="pieChart"></div>
+			<div class="center" >
 
+				<div id="info2" ></div>
+				<div id="chart1" ></div>
 			</div>
-			<div id="info2"></div>
-
+			
 		</div>
+		
 
-		<footer class="site-footer group" role="contentinfo">
-			<div class="container">
-				<p class="sfooter-line">
-					<a class="sfooter-link" href="http://duohaobiandang.com/about/contact">联系我们</a> | <a class="sfooter-link" href="http://duohaobiandang.com/about/agreement">服务条款和协议</a>
-				</p>
-				<p class="sfooter-line">
-					增值电信业务许可证：<a class="sfooter-link sfooter-link-zero" target="_blank" rel="nofollow" href="http://www.shca.gov.cn">*******</a>
-					<a class="sfooter-link" target="_blank" rel="nofollow" href="">*********</a>
-					<a class="sfooter-link" target="_blank" rel="nofollow" href="">********</a>
-					<br />
-					Copyright &copy; 2014-2015 DUOHAOBIANDANG, All Rights Reserved.
-				</p>
-				<p class="sfooter-line site-footer-police">
-					<a href="http://www.zx110.org/picp/?sn=310100103568" rel="nofollow" target="_blank"><img src="" height="30"></a>
-				</p>
-			</div>
-		</footer>
-
+	</body>
 </html>
