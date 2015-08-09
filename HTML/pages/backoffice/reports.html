@@ -34,16 +34,75 @@
 		<script type="text/JavaScript" src="../../JS/jqplot/plugins/jqplot.donutRenderer.min.js"></script>
 
 		<script>
-			$(document).ready(function() {
-				var line1 = [[7, '菜品1'], [9, '菜品2'], [15, '菜品3'], [12, '菜品4'], [4, '菜品5'], [3, '菜品6'], [10, '菜品7']];
+			$(document).ready(getreport);
+			function getreport(evt) {
+				
+				$("#chart1").empty();
+				$("#pieChart").empty();
+				$("#info2").empty();
+				
+
+				var type = [0];
+				for (var i = 1; i < 10; i++) {
+					var x = ["菜类" + i];
+					type.unshift(x);
+				}
+				type.pop();
+
+				var item = [0];
+				for (var i = 1; i < 30; i++) {
+					var x = ["菜品" + i];
+					item.unshift(x);
+				}
+				item.pop();
+
+				var line1 = [0, 0];
 				var line2 = [0, 0];
+				var charType=$("#chartSelect").val();
+				
+				if ($("#chartSelect").val()=="type")
+				
+				{for (var i = 0; i < type.length; i++) {
+					if ($("input[name='sales']:checked").val() == "qty") {
+						var x = [i, type[i]];
+						line1.unshift(x);
+					} else {
+						var x = [i * 4, type[i]];
+						line1.unshift(x);
+					}
+				}}
+				
+				else if ($("#chartSelect").val()=="item")
+				{
+					for (var i = 0; i < item.length; i++) {
+					if ($("input[name='sales']:checked").val() == "qty") {
+						var x = [i, item[i]];
+						line1.unshift(x);
+					} else {
+						var x = [i * 4, item[i]];
+						line1.unshift(x);
+					}
+				}
+					
+				}
+				line1.pop();
+				line1.pop();
+
 				var titles = $("input[name='sales']:checked").next('label').text();
+				var le = line1.length;
+				
+
 				for (var i = 0; i < line1.length; i++) {
-					line3 = [line1[i][1], line1[i][0]];
+					var line3 = [line1[i][1], line1[i][0]];
 
 					line2.unshift(line3);
 				}
+				line2.pop();
+				line2.pop();
+
 				var plot1 = $.jqplot('chart1', [line1], {
+					height: le*30 +"px",
+					
 					title : titles,
 					seriesDefaults : {
 						renderer : $.jqplot.BarRenderer,
@@ -62,12 +121,11 @@
 						}
 					}
 				});
-				$('#chart1').bind('jqplotDataHighlight', function(ev, seriesIndex, pointIndex, data) {
-					$('#info2').html('菜品: ' + line1[pointIndex][1] + ', 排名: ' + data[1] + ', 销量: ' + data[0]);
-				});
-
+			
 				
-
+				$('#chart1').bind('jqplotDataHighlight', function(ev, seriesIndex, pointIndex, data) {
+					$('#info2').html('菜类: ' + line1[pointIndex][1] + ', 排名: ' + data[1] + ', 销量: ' + data[0]);
+				});
 				var plot2 = $.jqplot('pieChart', [line2], {
 					seriesDefaults : {
 						renderer : $.jqplot.PieRenderer,
@@ -80,8 +138,12 @@
 						location : 'e'
 					}
 				});
+				
+				
+										
 
-			});
+			};
+			
 		</script>
 
 	</head>
@@ -101,53 +163,7 @@
 						</div>
 					</header>
 
-					<div class="rst-header-detail rst-header-dropdown">
-						<section class="rst-header-rating group">
-
-							<div class="rating-point header" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-								<a class="point"><span itemprop="ratingValue">5.0</span></a>
-							</div>
-
-							<ul class="rating-diagram header">
-								<li class="diagram-item">
-									<span class="rating-stars"> <i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star">&#9733;</i></span>
-									<span class="bar" style="width: 110px;"></span>
-									100%
-								</li>
-								<li class="diagram-item">
-									<span class="rating-stars"> <i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star off">&#9733;</i></span>
-									<span class="bar" style="width: 0px;"></span>
-									0%
-								</li>
-								<li class="diagram-item">
-									<span class="rating-stars"> <i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star off">&#9733;</i><i class="glyph-rating-star off">&#9733;</i></span>
-									<span class="bar" style="width: 0px;"></span>
-									0%
-								</li>
-								<li class="diagram-item">
-									<span class="rating-stars"> <i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star off">&#9733;</i><i class="glyph-rating-star off">&#9733;</i><i class="glyph-rating-star off">&#9733;</i></span>
-									<span class="bar" style="width: 0px;"></span>
-									0%
-								</li>
-								<li class="diagram-item">
-									<span class="rating-stars"> <i class="glyph-rating-star">&#9733;</i><i class="glyph-rating-star off">&#9733;</i><i class="glyph-rating-star off">&#9733;</i><i class="glyph-rating-star off">&#9733;</i><i class="glyph-rating-star off">&#9733;</i></span>
-									<span class="bar" style="width: 0px;"></span>
-									0%
-								</li>
-							</ul>
-						</section>
-						<section class="rst-header-intro">
-							多好便当，如您对本店外卖满意，请给好评，点击页顶左侧【点赞】打分！
-						</section>
-						<ul class="rst-header-list">
-							<li>
-								<span class="item">时间：</span>08:00 - 20:00
-							</li>
-							<li>
-								<span class="item">地址：</span><span itemprop="address">多好便当地址</span>
-							</li>
-						</ul>
-					</div>
+					
 
 				</article>
 				<nav class="rst-header-nav">
@@ -162,8 +178,8 @@
 		<div class="container">
 			<div class="left">
 				<label>分类:&nbsp;</label>
-				<select >
-					<option value="type" selected="selected">菜品类别</option>
+				<select id="chartSelect" onchange="getreport()">
+					<option value="type" selected="selected" >菜品类别</option>
 					<option value="item">菜品名称</option>
 					<option value="time">时间轴线</option>
 				</select>
@@ -177,24 +193,24 @@
 				<br />
 				<br />
 				<form>
-					<input type="radio" name="sales" id="amount" value="amount" checked="checked" />&nbsp;<label for="amount">销售金额</label>
-					
+					<input type="radio" name="sales" id="amount" value="amount" checked="checked" onchange="getreport();"/>
+					&nbsp;<label for="amount" >销售金额</label>
+
 					<br />
-					<input type="radio" name="sales" id="qty" value="qty" />&nbsp;<label for="qyt">销售份数</label>
-					
+					<input type="radio" name="sales" id="qty" value="qty" onchange="getreport();"/>
+					&nbsp;<label for="qty" >销售份数</label>
+
 				</form>
 			</div>
 
-			
 			<div class="right" id="pieChart"></div>
 			<div class="center" >
 
 				<div id="info2" ></div>
 				<div id="chart1" ></div>
 			</div>
-			
+
 		</div>
-		
 
 	</body>
 </html>
