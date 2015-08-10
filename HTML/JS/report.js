@@ -1,20 +1,17 @@
 $(document).ready(getreport);
 function getreport(evt) {
-	
+
 	var type = [0];
 	var item = [0];
 
 	emptyOldCharts();
-	
-	
-	
+
 	for (var i = 1; i < 10; i++) {
 		var x = ["菜类" + i];
 		type.unshift(x);
 	}
 	type.pop();
 
-	
 	for (var i = 1; i < 30; i++) {
 		var x = ["菜品" + i];
 		item.unshift(x);
@@ -49,9 +46,10 @@ function getreport(evt) {
 	}
 	line1.pop();
 	line1.pop();
-
-	var titles = $("input[name='sales']:checked").next('label').text();
+	
 	var le = line1.length;
+	var titles = $("input[name='sales']:checked").next('label').text();
+	
 
 	for (var i = 0; i < line1.length; i++) {
 		var line3 = [line1[i][1], line1[i][0]];
@@ -62,7 +60,7 @@ function getreport(evt) {
 	line2.pop();
 
 	var plot1 = $.jqplot('chart1', [line1], {
-		height : le * 30 + "px",
+		height : line1.length * 30 + "px",
 
 		title : titles,
 		seriesDefaults : {
@@ -93,16 +91,16 @@ function getreport(evt) {
 				showDataLabels : true
 			}
 		},
-		legend : {
-			show : true,
-			location : 'e'
-		}
+
 	});
 
 };
 
 function emptyOldCharts() {
 	$("#chart1").empty();
+	$("#chart1").css({
+		height: 'auto'
+	})
 	$("#pieChart").empty();
 	$("#info2").empty();
 }
