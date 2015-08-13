@@ -56,9 +56,15 @@ function gettotalcost() {
 	}
 
 	$("p.rcart-empty").empty();
-	$("p.rcart-empty").append('<div ><input type="button" value="去卖单"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总计:&nbsp;&yen;' + total + '</div>');
+	$("p.rcart-empty").append('<div ><input name="checkout" type="button" value="去卖单" onclick="topay()"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总计:&nbsp;&yen;' + total + '</div>');
 
 	total = 0;
+
+}
+
+function topay() {
+	window.open('pages/checkout.html', 'CheckOut', 'width=800,height=600');
+	return false;
 
 }
 
