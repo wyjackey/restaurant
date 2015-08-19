@@ -8,6 +8,8 @@ $(document).ready(function() {
 	$('input[name="buy"]').click(function() {
 		name = $(this).parent().parent().parent().text().replace(/\s+/g, '').slice(0, -1);
 		var price = $(this).val();
+		$("#basket_view > p").remove();
+		$("#basket_view").prepend("<p>清空 <a href='javascript:void(0);' class='emptyB'>&times;</a></p>")
 
 		if ($.inArray(name, list) == -1) {
 			addItem(name, price);
@@ -31,17 +33,23 @@ $(document).ready(function() {
 		gettotalcost();		
 	}); 
 	
-	$(document).on('click', 'a.minus', function(e) {		
+	
+	$(document).on('click', 'a.minus', function(e) {
 		var itemName = $(this).parent().prev().text();
-		var qtyP=$(this).next().val();		
-		var qty=parseFloat(qtyP,10).toFixed(2);				
-		var totalP=$(this).parent().next().text();		
-		var total=parseFloat(totalP,10).toFixed(2);
-		var itemPrice=total/qty;	
-			
+		var qtyP = $(this).next().val();
+		var qty = parseFloat(qtyP, 10).toFixed(2);
+		var totalP = $(this).parent().next().text();
+		var total = parseFloat(totalP, 10).toFixed(2);
+		var itemPrice = total / qty;
+
 		increaseQty(itemName, itemPrice, -1);
-		gettotalcost();		
-	});
+		gettotalcost();
+		
+		if (jQuery.isEmptyObject(list)) {
+			reset();
+		}
+	}); 
+
 	
 	
 	$(document).on('click', 'a.delete', function() {		
@@ -50,6 +58,12 @@ $(document).ready(function() {
 		deleteItem();
 		gettotalcost();
 	}); 
+	
+	
+	$(document).on('click', '.emptyB', function() {
+		reset();
+	}); 
+
 }); 
 
 
@@ -82,23 +96,41 @@ function addItem(name, price){
 }
 
 
+
 function deleteItem(name) {
 	var itemName;
-	if (name!=null){
-		alert(name);
-		itemName=name;
-	}
-	else{
+	if (name != null) {
+
+		itemName = name;
+	} else {
 		itemName = $(this).prev().prev().prev().text();
 	}
-	
+
 	list.splice(list.indexOf(itemName), 1);
-	var div = $("#basket_view");
-	var toppx = div.css('top');
-	var top = parseInt(toppx, 10);
 
-	$("#basket_view").css('top', top + 45 + "px");
+	
 
+		var div = $("#basket_view");
+		var toppx = div.css('top');
+		var top = parseInt(toppx, 10);
+
+		$("#basket_view").css('top', top + 45 + "px");
+	
+
+}
+
+
+function reset(){
+	$('#rst_cart').empty();
+		$('#rst_cart').append('<div id="basket_view" class="rcart-list-wrapper eleme_view ui_c1" style="top: -40px;">' 
+		+ '<p>篮子是空的</p>' 
+		+ '<ul class="rcart-list basket_list" style="max-height: 721px;"></ul>' 
+		+ '</div>' 
+		+ '<div id="basket_view_7" class="rcart-list-wrapper eleme_view ui_c2">' 
+		+ '<p class="rcart-empty" >篮子是空的</p></div>');
+		
+		list=[];
+		menuList=[];
 }
 
 
@@ -120,10 +152,13 @@ function increaseQty(name, price, change) {
 				break;
 			}
 		}
-	} else {
+	}
+	else {
 		$("#cost" + name).parent().remove();
 		deleteItem(name);
+		
 	}
+
 }
 
 function gettotalcost() {
