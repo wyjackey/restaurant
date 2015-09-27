@@ -32,13 +32,13 @@ END
 CREATE TABLE dbo.Address
 (
     Address_id int NOT NULL Identity primary key
-	,Street_name varchar(256) 
-	,Street_number varchar(64) 
-	,City varchar(128) 
-	,Province varchar(128)
-	,Country varchar(128)
-	,Postcode varchar(128)
-	,House_number varchar(128)
+	,Street_name NVARCHAR(256) 
+	,Street_number NVARCHAR(64) 
+	,City NVARCHAR(128) 
+	,Province NVARCHAR(128)
+	,Country NVARCHAR(128)
+	,Postcode NVARCHAR(128)
+	,House_number NVARCHAR(128)
 );
 
 
@@ -52,13 +52,13 @@ CREATE TABLE dbo.Customer_Info
 (
     Customer_id int NOT NULL Identity primary key
     ,Name smallint NOT NULL
-    ,Phone1 varchar(64) NULL
-    ,Phone2 varchar(64) NULL
-    ,Phone3 varchar(64) NULL
+    ,Phone1 NVARCHAR(64) NULL
+    ,Phone2 NVARCHAR(64) NULL
+    ,Phone3 NVARCHAR(64) NULL
     ,Birthday_date datetime NULL
     ,Address_id int NULL
-    ,Email varchar(128) NULL
-    ,Gender varchar(32) NULL
+    ,Email NVARCHAR(128) NULL
+    ,Gender NVARCHAR(32) NULL
     ,Age int NULL
 );
 
@@ -72,18 +72,18 @@ CREATE TABLE dbo.Staff_info
 (
     Staff_id int NOT NULL Identity primary key
     ,Name smallint NOT NULL
-    ,Phone1 varchar(64) NULL
-    ,Phone2 varchar(64) NULL
-    ,Phone3 varchar(64) NULL
+    ,Phone1 NVARCHAR(64) NULL
+    ,Phone2 NVARCHAR(64) NULL
+    ,Phone3 NVARCHAR(64) NULL
     ,Birthday_date datetime NULL
     ,Address_id int FOREIGN KEY REFERENCES Address(Address_id)
-    ,Email varchar(128) NULL
-    ,Gender varchar(32) NULL
+    ,Email NVARCHAR(128) NULL
+    ,Gender NVARCHAR(32) NULL
     ,Age int NULL
 	,Create_date datetime NOT NULL
 	,Join_date datetime NULL
 	,End_date datetime NULL
-	,Status varchar(32) NULL
+	,Status NVARCHAR(32) NULL
 );
 
 IF EXISTS(SELECT * from sys.tables WHERE name='Pay_Info')
@@ -95,14 +95,14 @@ END
 CREATE TABLE dbo.Pay_Info
 (
     Pay_id int NOT NULL Identity primary key
-	,Pay_method varchar(32) NULL
+	,Pay_method NVARCHAR(32) NULL
 	,Delivery_fee decimal
 	,Menu_fee decimal
 	,Total_fee decimal
 	,Discount DECIMAL(5,2)
 	,Create_date datetime NULL
 	,Pay_date datetime NULL
-	,Pay_complete varchar(32) NULL
+	,Pay_complete NVARCHAR(32) NULL
 );
 
 
@@ -123,8 +123,8 @@ CREATE TABLE dbo.Customer_Invoice
 	,Create_date datetime NULL
 	,Deliver_time datetime NULL
 	,Need_invoice bit
-	,Invoice_head varchar(512) NULL
-	,Is_delivery varchar(32) NULL
+	,Invoice_head NVARCHAR(512) NULL
+	,Is_delivery NVARCHAR(32) NULL
 	,Status_id int FOREIGN KEY REFERENCES Status_info(Status_id)  
 );
 
@@ -138,8 +138,8 @@ END
 CREATE TABLE dbo.Status_info
 (
     Status_id int NOT NULL Identity primary key
-	,Description varchar(512) NULL
-	,Cause_description varchar(512) NULL
+	,Description NVARCHAR(512) NULL
+	,Cause_description NVARCHAR(512) NULL
 );
 
 IF EXISTS(SELECT * from sys.tables WHERE name='Image_info')
@@ -151,8 +151,8 @@ END
 CREATE TABLE dbo.Image_info
 (
     Image_id int NOT NULL Identity primary key
-	,Path varchar(512) 
-	,Description varchar(1024) 
+	,Path NVARCHAR(512) 
+	,Description NVARCHAR(1024) 
 );
 
 
@@ -165,15 +165,15 @@ END
 CREATE TABLE dbo.Menu
 (
     Menu_id int NOT NULL Identity primary key
-	,Menu_name varchar(512) 
+	,Menu_name NVARCHAR(512) 
 	,Price decimal
-	,Description  varchar(1024) 
-	,Flavor varchar(64) 
-	,Rating  varchar(64)   
-	,Is_available   varchar(32) 
-	,Is_new  varchar(32) 
+	,Description  NVARCHAR(1024) 
+	,Flavor NVARCHAR(64) 
+	,Rating  NVARCHAR(64)   
+	,Is_available   NVARCHAR(32) 
+	,Is_new  NVARCHAR(32) 
 	,Quantity int
-	,Is_Activation  varchar(32) 
+	,Is_Activation  NVARCHAR(32) 
 	,Create_date datetime NULL
 	,Modified_date datetime NULL
 	,Small_Image_id int FOREIGN KEY REFERENCES Image_info(Image_id)

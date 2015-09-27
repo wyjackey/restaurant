@@ -1,0 +1,319 @@
+ use Restaurant
+ 
+ /* 
+GetstudentnameInOutputVariable is the name of the stored procedure which
+uses output variable @Studentname to collect the student name returns by the
+stored procedure
+*/
+Create  PROCEDURE GetAllMenus
+--(
+
+--@studentid INT                       --Input parameter ,  Studentid of the student
+----@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+--)
+AS
+BEGIN
+SELECT * FROM Menu
+END
+
+
+Create  PROCEDURE GetMaxID
+AS
+
+SELECT CASE WHEN (MAX(Menu_id) is null) THEN 0 ELSE MAX(Menu_id) END
+FROM Menu
+
+END
+
+
+Create  PROCEDURE GetAddressByID
+(
+
+@addressid INT                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+)
+AS
+BEGIN
+
+SELECT * FROM address where Address_id = @addressid
+
+END
+
+Create  PROCEDURE GetMenuByID
+(
+
+@menuId INT                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+)
+AS
+BEGIN
+
+SELECT * FROM Menu where Menu_id = @menuId
+
+END
+
+
+
+Create  PROCEDURE searchMenus
+(
+
+@searchString NVARCHAR(512)                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+)
+AS
+BEGIN
+
+SELECT * FROM Menu 
+where Menu_name like '%' + @searchString +'%'
+OR Description like '%' + @searchString +'%'
+OR Flavor like '%' + @searchString +'%'
+END
+
+
+Create  PROCEDURE GetAddressMaxID
+AS
+BEGIN
+
+SELECT CASE WHEN (MAX(Address_id) is null) THEN 0 ELSE MAX(Address_id) END  
+FROM Address
+
+END
+
+
+Create  PROCEDURE GetCustomerInvoiceByID
+(
+
+@invoiceId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+)
+AS
+BEGIN
+
+SELECT * FROM Customer_Invoice
+WHERE Invoice_id = @invoiceId
+
+END
+
+
+Create  PROCEDURE GetCustomerInvoiceMaxID
+--(
+
+--@invoiceId int                       --Input parameter ,  Studentid of the student
+----@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+--)
+AS
+BEGIN
+
+SELECT CASE WHEN (MAX(Invoice_id) is null) THEN 0 ELSE MAX(Invoice_id) END 
+FROM Customer_Invoice
+
+END
+
+
+Create  PROCEDURE GetStaffInfoByID
+(
+
+@staffId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+)
+AS
+BEGIN
+
+SELECT * FROM Staff_info
+WHERE Staff_id = @staffId
+
+END
+
+Create  PROCEDURE GetStaffInfoMaxID
+--(
+
+--@staffId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+--)
+AS
+BEGIN
+
+SELECT CASE WHEN (MAX(Staff_id) is null) THEN 0 ELSE MAX(Staff_id) END
+FROM Staff_info
+
+END
+
+Create  PROCEDURE GetCustomerInfoMaxID
+--(
+
+--@staffId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+--)
+AS
+BEGIN
+
+SELECT CASE WHEN (MAX(Customer_id) is null) THEN 0 ELSE MAX(Customer_id) END 
+FROM Customer_Info
+
+END
+
+
+Create  PROCEDURE GetCustomerInfoByID
+(
+
+@customerId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+)
+AS
+BEGIN
+
+SELECT * FROM Customer_Info
+WHERE Customer_id = @customerId
+
+END
+
+
+Create  PROCEDURE GetImageInfoByID
+(
+
+@imageId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+)
+AS
+BEGIN
+
+SELECT * FROM Image_Info
+WHERE Image_id = @imageId
+
+END
+
+go
+/****** object:  storedprocedure [dbo].[getimageinfomaxid]    script date: 09/06/2015 11:14:50 ******/
+set ansi_nulls on
+go
+set quoted_identifier on
+go
+alter  procedure [dbo].[getimageinfomaxid]
+--(
+
+--@staffid int                       --input parameter ,  studentid of the student
+--@studentname nvarchar(200)  out        -- out parameter declared with the help of out keyword
+--)
+as
+begin
+
+select case when (max(image_id) is null) then 0 else max(image_id) end 
+from image_info
+
+end
+
+Create  PROCEDURE GetInvoiceMenuMaxID
+--(
+
+--@staffId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+--)
+AS
+BEGIN
+
+SELECT CASE WHEN (MAX(Invoice_menu_id) is null) THEN 0 ELSE MAX(Invoice_menu_id) END
+FROM Invoice_Menu
+
+END
+
+
+
+Create  PROCEDURE GetInvoiceMenuByID
+(
+
+@invoiceMenuId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+)
+AS
+BEGIN
+
+	SELECT * FROM Invoice_Menu
+	WHERE Invoice_menu_id = @invoiceMenuId
+
+END
+
+
+
+Create  PROCEDURE GetPayInfoByID
+(
+
+@payId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+)
+AS
+BEGIN
+
+	SELECT * FROM pay_info
+	WHERE Pay_id = @payId
+
+END
+
+
+Create  PROCEDURE GetPayInfoMaxID
+--(
+
+--@staffId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+--)
+AS
+BEGIN
+
+SELECT CASE WHEN (MAX(Pay_id) is null) THEN 0 ELSE MAX(Pay_id) END 
+FROM pay_info
+
+END
+
+
+Create  PROCEDURE GetStatusInfoMaxID
+--(
+
+--@staffId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+--)
+AS
+BEGIN
+
+SELECT CASE WHEN (MAX(Status_id) is null) THEN 0 ELSE MAX(Status_id) END
+FROM status_info
+
+END
+
+
+
+
+Create  PROCEDURE GetStatusInfoByID
+(
+
+@statusId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+)
+AS
+BEGIN
+
+	SELECT * FROM status_info
+	WHERE Status_id = @statusId
+
+END
+
+
+use Restaurant
+ALTER TABLE Image_info
+ADD  Name NVARCHAR(128) not null
+
+Create  PROCEDURE GetImageIDByName
+(
+
+@imageName NVARCHAR(256)                       --Input parameter ,  Studentid of the student
+)
+AS
+BEGIN
+
+SELECT Image_id FROM Image_info 
+WHERE Name = @imageName
+
+END
+
+
+
+use [restaurant]
+
