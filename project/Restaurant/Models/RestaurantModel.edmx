@@ -1,0 +1,778 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RestaurantModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="RestaurantModelStoreContainer">
+          <EntitySet Name="Address" EntityType="RestaurantModel.Store.Address" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer_Info" EntityType="RestaurantModel.Store.Customer_Info" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer_Invoice" EntityType="RestaurantModel.Store.Customer_Invoice" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Image_info" EntityType="RestaurantModel.Store.Image_info" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Invoice_Menu" EntityType="RestaurantModel.Store.Invoice_Menu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Menu" EntityType="RestaurantModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Pay_Info" EntityType="RestaurantModel.Store.Pay_Info" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Staff_info" EntityType="RestaurantModel.Store.Staff_info" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Status_info" EntityType="RestaurantModel.Store.Status_info" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__Customer___Addre__182C9B23" Association="RestaurantModel.Store.FK__Customer___Addre__182C9B23">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Customer_Invoice" EntitySet="Customer_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer___Custo__173876EA" Association="RestaurantModel.Store.FK__Customer___Custo__173876EA">
+            <End Role="Customer_Info" EntitySet="Customer_Info" />
+            <End Role="Customer_Invoice" EntitySet="Customer_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer___Pay_i__164452B1" Association="RestaurantModel.Store.FK__Customer___Pay_i__164452B1">
+            <End Role="Pay_Info" EntitySet="Pay_Info" />
+            <End Role="Customer_Invoice" EntitySet="Customer_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer___Staff__15502E78" Association="RestaurantModel.Store.FK__Customer___Staff__15502E78">
+            <End Role="Staff_info" EntitySet="Staff_info" />
+            <End Role="Customer_Invoice" EntitySet="Customer_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer___Statu__1920BF5C" Association="RestaurantModel.Store.FK__Customer___Statu__1920BF5C">
+            <End Role="Status_info" EntitySet="Status_info" />
+            <End Role="Customer_Invoice" EntitySet="Customer_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice_M__Invoi__276EDEB3" Association="RestaurantModel.Store.FK__Invoice_M__Invoi__276EDEB3">
+            <End Role="Customer_Invoice" EntitySet="Customer_Invoice" />
+            <End Role="Invoice_Menu" EntitySet="Invoice_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice_M__Menu___286302EC" Association="RestaurantModel.Store.FK__Invoice_M__Menu___286302EC">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Invoice_Menu" EntitySet="Invoice_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menu__Big_Image___22AA2996" Association="RestaurantModel.Store.FK__Menu__Big_Image___22AA2996">
+            <End Role="Image_info" EntitySet="Image_info" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menu__Small_Imag__21B6055D" Association="RestaurantModel.Store.FK__Menu__Small_Imag__21B6055D">
+            <End Role="Image_info" EntitySet="Image_info" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Staff_inf__Addre__08EA5793" Association="RestaurantModel.Store.FK__Staff_inf__Addre__08EA5793">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Staff_info" EntitySet="Staff_info" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Address_id" />
+          </Key>
+          <Property Name="Address_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Street_name" Type="nvarchar" MaxLength="256" />
+          <Property Name="Street_number" Type="nvarchar" MaxLength="64" />
+          <Property Name="City" Type="nvarchar" MaxLength="128" />
+          <Property Name="Province" Type="nvarchar" MaxLength="128" />
+          <Property Name="Country" Type="nvarchar" MaxLength="128" />
+          <Property Name="Postcode" Type="nvarchar" MaxLength="128" />
+          <Property Name="House_number" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Customer_Info">
+          <Key>
+            <PropertyRef Name="Customer_id" />
+          </Key>
+          <Property Name="Customer_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="smallint" Nullable="false" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="64" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="64" />
+          <Property Name="Phone3" Type="nvarchar" MaxLength="64" />
+          <Property Name="Birthday_date" Type="datetime" />
+          <Property Name="Address_id" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="128" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="32" />
+          <Property Name="Age" Type="int" />
+        </EntityType>
+        <EntityType Name="Customer_Invoice">
+          <Key>
+            <PropertyRef Name="Invoice_id" />
+          </Key>
+          <Property Name="Invoice_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Staff_id" Type="int" />
+          <Property Name="Pay_id" Type="int" />
+          <Property Name="Customer_id" Type="int" />
+          <Property Name="Address_id" Type="int" />
+          <Property Name="Create_date" Type="datetime" />
+          <Property Name="Deliver_time" Type="datetime" />
+          <Property Name="Need_invoice" Type="bit" />
+          <Property Name="Invoice_head" Type="nvarchar" MaxLength="512" />
+          <Property Name="Is_delivery" Type="nvarchar" MaxLength="32" />
+          <Property Name="Status_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Image_info">
+          <Key>
+            <PropertyRef Name="Image_id" />
+          </Key>
+          <Property Name="Image_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Path" Type="nvarchar" MaxLength="512" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Invoice_Menu">
+          <Key>
+            <PropertyRef Name="Invoice_menu_id" />
+          </Key>
+          <Property Name="Invoice_menu_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Invoice_id" Type="int" />
+          <Property Name="Menu_id" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Menu_id" />
+          </Key>
+          <Property Name="Menu_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Menu_name" Type="nvarchar" MaxLength="512" />
+          <Property Name="Price" Type="decimal" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Flavor" Type="nvarchar" MaxLength="64" />
+          <Property Name="Rating" Type="nvarchar" MaxLength="64" />
+          <Property Name="Is_available" Type="nvarchar" MaxLength="32" />
+          <Property Name="Is_new" Type="nvarchar" MaxLength="32" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Is_Activation" Type="nvarchar" MaxLength="32" />
+          <Property Name="Create_date" Type="datetime" />
+          <Property Name="Modified_date" Type="datetime" />
+          <Property Name="Small_Image_id" Type="int" />
+          <Property Name="Big_Image_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Pay_Info">
+          <Key>
+            <PropertyRef Name="Pay_id" />
+          </Key>
+          <Property Name="Pay_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Pay_method" Type="nvarchar" MaxLength="32" />
+          <Property Name="Delivery_fee" Type="decimal" />
+          <Property Name="Menu_fee" Type="decimal" />
+          <Property Name="Total_fee" Type="decimal" />
+          <Property Name="Discount" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Create_date" Type="datetime" />
+          <Property Name="Pay_date" Type="datetime" />
+          <Property Name="Pay_complete" Type="nvarchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="Staff_info">
+          <Key>
+            <PropertyRef Name="Staff_id" />
+          </Key>
+          <Property Name="Staff_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="64" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="64" />
+          <Property Name="Phone3" Type="nvarchar" MaxLength="64" />
+          <Property Name="Birthday_date" Type="datetime" />
+          <Property Name="Address_id" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="128" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="32" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Create_date" Type="datetime" Nullable="false" />
+          <Property Name="Join_date" Type="datetime" />
+          <Property Name="End_date" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="Status_info">
+          <Key>
+            <PropertyRef Name="Status_id" />
+          </Key>
+          <Property Name="Status_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" MaxLength="512" />
+          <Property Name="Cause_description" Type="nvarchar" MaxLength="512" />
+        </EntityType>
+        <Association Name="FK__Customer___Addre__182C9B23">
+          <End Role="Address" Type="RestaurantModel.Store.Address" Multiplicity="0..1" />
+          <End Role="Customer_Invoice" Type="RestaurantModel.Store.Customer_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Address_id" />
+            </Principal>
+            <Dependent Role="Customer_Invoice">
+              <PropertyRef Name="Address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer___Custo__173876EA">
+          <End Role="Customer_Info" Type="RestaurantModel.Store.Customer_Info" Multiplicity="0..1" />
+          <End Role="Customer_Invoice" Type="RestaurantModel.Store.Customer_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_Info">
+              <PropertyRef Name="Customer_id" />
+            </Principal>
+            <Dependent Role="Customer_Invoice">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer___Pay_i__164452B1">
+          <End Role="Pay_Info" Type="RestaurantModel.Store.Pay_Info" Multiplicity="0..1" />
+          <End Role="Customer_Invoice" Type="RestaurantModel.Store.Customer_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pay_Info">
+              <PropertyRef Name="Pay_id" />
+            </Principal>
+            <Dependent Role="Customer_Invoice">
+              <PropertyRef Name="Pay_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer___Staff__15502E78">
+          <End Role="Staff_info" Type="RestaurantModel.Store.Staff_info" Multiplicity="0..1" />
+          <End Role="Customer_Invoice" Type="RestaurantModel.Store.Customer_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff_info">
+              <PropertyRef Name="Staff_id" />
+            </Principal>
+            <Dependent Role="Customer_Invoice">
+              <PropertyRef Name="Staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer___Statu__1920BF5C">
+          <End Role="Status_info" Type="RestaurantModel.Store.Status_info" Multiplicity="0..1" />
+          <End Role="Customer_Invoice" Type="RestaurantModel.Store.Customer_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_info">
+              <PropertyRef Name="Status_id" />
+            </Principal>
+            <Dependent Role="Customer_Invoice">
+              <PropertyRef Name="Status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice_M__Invoi__276EDEB3">
+          <End Role="Customer_Invoice" Type="RestaurantModel.Store.Customer_Invoice" Multiplicity="0..1" />
+          <End Role="Invoice_Menu" Type="RestaurantModel.Store.Invoice_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_Invoice">
+              <PropertyRef Name="Invoice_id" />
+            </Principal>
+            <Dependent Role="Invoice_Menu">
+              <PropertyRef Name="Invoice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice_M__Menu___286302EC">
+          <End Role="Menu" Type="RestaurantModel.Store.Menu" Multiplicity="0..1" />
+          <End Role="Invoice_Menu" Type="RestaurantModel.Store.Invoice_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Menu_id" />
+            </Principal>
+            <Dependent Role="Invoice_Menu">
+              <PropertyRef Name="Menu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menu__Big_Image___22AA2996">
+          <End Role="Image_info" Type="RestaurantModel.Store.Image_info" Multiplicity="0..1" />
+          <End Role="Menu" Type="RestaurantModel.Store.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image_info">
+              <PropertyRef Name="Image_id" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="Big_Image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menu__Small_Imag__21B6055D">
+          <End Role="Image_info" Type="RestaurantModel.Store.Image_info" Multiplicity="0..1" />
+          <End Role="Menu" Type="RestaurantModel.Store.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image_info">
+              <PropertyRef Name="Image_id" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="Small_Image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Staff_inf__Addre__08EA5793">
+          <End Role="Address" Type="RestaurantModel.Store.Address" Multiplicity="0..1" />
+          <End Role="Staff_info" Type="RestaurantModel.Store.Staff_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Address_id" />
+            </Principal>
+            <Dependent Role="Staff_info">
+              <PropertyRef Name="Address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Address_id" />
+          </Key>
+          <Property Name="Address_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street_name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Street_number" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Postcode" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="House_number" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer_Invoice" Relationship="Self.FK__Customer___Addre__182C9B23" FromRole="Address" ToRole="Customer_Invoice" />
+          <NavigationProperty Name="Staff_info" Relationship="Self.FK__Staff_inf__Addre__08EA5793" FromRole="Address" ToRole="Staff_info" />
+        </EntityType>
+        <EntityType Name="Customer_Info">
+          <Key>
+            <PropertyRef Name="Customer_id" />
+          </Key>
+          <Property Name="Customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="Int16" Nullable="false" />
+          <Property Name="Phone1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Phone3" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday_date" Type="DateTime" Precision="3" />
+          <Property Name="Address_id" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <NavigationProperty Name="Customer_Invoice" Relationship="Self.FK__Customer___Custo__173876EA" FromRole="Customer_Info" ToRole="Customer_Invoice" />
+        </EntityType>
+        <EntityType Name="Customer_Invoice">
+          <Key>
+            <PropertyRef Name="Invoice_id" />
+          </Key>
+          <Property Name="Invoice_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Staff_id" Type="Int32" />
+          <Property Name="Pay_id" Type="Int32" />
+          <Property Name="Customer_id" Type="Int32" />
+          <Property Name="Address_id" Type="Int32" />
+          <Property Name="Create_date" Type="DateTime" Precision="3" />
+          <Property Name="Deliver_time" Type="DateTime" Precision="3" />
+          <Property Name="Need_invoice" Type="Boolean" />
+          <Property Name="Invoice_head" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Is_delivery" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Status_id" Type="Int32" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Customer___Addre__182C9B23" FromRole="Customer_Invoice" ToRole="Address" />
+          <NavigationProperty Name="Customer_Info" Relationship="Self.FK__Customer___Custo__173876EA" FromRole="Customer_Invoice" ToRole="Customer_Info" />
+          <NavigationProperty Name="Pay_Info" Relationship="Self.FK__Customer___Pay_i__164452B1" FromRole="Customer_Invoice" ToRole="Pay_Info" />
+          <NavigationProperty Name="Staff_info" Relationship="Self.FK__Customer___Staff__15502E78" FromRole="Customer_Invoice" ToRole="Staff_info" />
+          <NavigationProperty Name="Status_info" Relationship="Self.FK__Customer___Statu__1920BF5C" FromRole="Customer_Invoice" ToRole="Status_info" />
+          <NavigationProperty Name="Invoice_Menu" Relationship="Self.FK__Invoice_M__Invoi__276EDEB3" FromRole="Customer_Invoice" ToRole="Invoice_Menu" />
+        </EntityType>
+        <EntityType Name="Image_info">
+          <Key>
+            <PropertyRef Name="Image_id" />
+          </Key>
+          <Property Name="Image_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Path" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Menus" Relationship="Self.FK__Menu__Big_Image___22AA2996" FromRole="Image_info" ToRole="Menu" />
+          <NavigationProperty Name="Menus1" Relationship="Self.FK__Menu__Small_Imag__21B6055D" FromRole="Image_info" ToRole="Menu" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Invoice_Menu">
+          <Key>
+            <PropertyRef Name="Invoice_menu_id" />
+          </Key>
+          <Property Name="Invoice_menu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Invoice_id" Type="Int32" />
+          <Property Name="Menu_id" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="Customer_Invoice" Relationship="Self.FK__Invoice_M__Invoi__276EDEB3" FromRole="Invoice_Menu" ToRole="Customer_Invoice" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK__Invoice_M__Menu___286302EC" FromRole="Invoice_Menu" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Menu_id" />
+          </Key>
+          <Property Name="Menu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Menu_name" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Description" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Flavor" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Is_available" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Is_new" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Is_Activation" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Create_date" Type="DateTime" Precision="3" />
+          <Property Name="Modified_date" Type="DateTime" Precision="3" />
+          <Property Name="Small_Image_id" Type="Int32" />
+          <Property Name="Big_Image_id" Type="Int32" />
+          <NavigationProperty Name="Image_info" Relationship="Self.FK__Menu__Big_Image___22AA2996" FromRole="Menu" ToRole="Image_info" />
+          <NavigationProperty Name="Image_info1" Relationship="Self.FK__Menu__Small_Imag__21B6055D" FromRole="Menu" ToRole="Image_info" />
+          <NavigationProperty Name="Invoice_Menu" Relationship="Self.FK__Invoice_M__Menu___286302EC" FromRole="Menu" ToRole="Invoice_Menu" />
+        </EntityType>
+        <EntityType Name="Pay_Info">
+          <Key>
+            <PropertyRef Name="Pay_id" />
+          </Key>
+          <Property Name="Pay_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pay_method" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Delivery_fee" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Menu_fee" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Total_fee" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Discount" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Create_date" Type="DateTime" Precision="3" />
+          <Property Name="Pay_date" Type="DateTime" Precision="3" />
+          <Property Name="Pay_complete" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer_Invoice" Relationship="Self.FK__Customer___Pay_i__164452B1" FromRole="Pay_Info" ToRole="Customer_Invoice" />
+        </EntityType>
+        <EntityType Name="Staff_info">
+          <Key>
+            <PropertyRef Name="Staff_id" />
+          </Key>
+          <Property Name="Staff_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Phone1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Phone3" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday_date" Type="DateTime" Precision="3" />
+          <Property Name="Address_id" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Join_date" Type="DateTime" Precision="3" />
+          <Property Name="End_date" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Staff_inf__Addre__08EA5793" FromRole="Staff_info" ToRole="Address" />
+          <NavigationProperty Name="Customer_Invoice" Relationship="Self.FK__Customer___Staff__15502E78" FromRole="Staff_info" ToRole="Customer_Invoice" />
+        </EntityType>
+        <EntityType Name="Status_info">
+          <Key>
+            <PropertyRef Name="Status_id" />
+          </Key>
+          <Property Name="Status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Cause_description" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer_Invoice" Relationship="Self.FK__Customer___Statu__1920BF5C" FromRole="Status_info" ToRole="Customer_Invoice" />
+        </EntityType>
+        <Association Name="FK__Customer___Addre__182C9B23">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Customer_Invoice" Type="Self.Customer_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Address_id" />
+            </Principal>
+            <Dependent Role="Customer_Invoice">
+              <PropertyRef Name="Address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Staff_inf__Addre__08EA5793">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Staff_info" Type="Self.Staff_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Address_id" />
+            </Principal>
+            <Dependent Role="Staff_info">
+              <PropertyRef Name="Address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer___Custo__173876EA">
+          <End Role="Customer_Info" Type="Self.Customer_Info" Multiplicity="0..1" />
+          <End Role="Customer_Invoice" Type="Self.Customer_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_Info">
+              <PropertyRef Name="Customer_id" />
+            </Principal>
+            <Dependent Role="Customer_Invoice">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer___Pay_i__164452B1">
+          <End Role="Pay_Info" Type="Self.Pay_Info" Multiplicity="0..1" />
+          <End Role="Customer_Invoice" Type="Self.Customer_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pay_Info">
+              <PropertyRef Name="Pay_id" />
+            </Principal>
+            <Dependent Role="Customer_Invoice">
+              <PropertyRef Name="Pay_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer___Staff__15502E78">
+          <End Role="Staff_info" Type="Self.Staff_info" Multiplicity="0..1" />
+          <End Role="Customer_Invoice" Type="Self.Customer_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff_info">
+              <PropertyRef Name="Staff_id" />
+            </Principal>
+            <Dependent Role="Customer_Invoice">
+              <PropertyRef Name="Staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer___Statu__1920BF5C">
+          <End Role="Status_info" Type="Self.Status_info" Multiplicity="0..1" />
+          <End Role="Customer_Invoice" Type="Self.Customer_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_info">
+              <PropertyRef Name="Status_id" />
+            </Principal>
+            <Dependent Role="Customer_Invoice">
+              <PropertyRef Name="Status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice_M__Invoi__276EDEB3">
+          <End Role="Customer_Invoice" Type="Self.Customer_Invoice" Multiplicity="0..1" />
+          <End Role="Invoice_Menu" Type="Self.Invoice_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_Invoice">
+              <PropertyRef Name="Invoice_id" />
+            </Principal>
+            <Dependent Role="Invoice_Menu">
+              <PropertyRef Name="Invoice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menu__Big_Image___22AA2996">
+          <End Role="Image_info" Type="Self.Image_info" Multiplicity="0..1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image_info">
+              <PropertyRef Name="Image_id" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="Big_Image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menu__Small_Imag__21B6055D">
+          <End Role="Image_info" Type="Self.Image_info" Multiplicity="0..1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image_info">
+              <PropertyRef Name="Image_id" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="Small_Image_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice_M__Menu___286302EC">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Invoice_Menu" Type="Self.Invoice_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Menu_id" />
+            </Principal>
+            <Dependent Role="Invoice_Menu">
+              <PropertyRef Name="Menu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestaurantContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Customer_Info" EntityType="Self.Customer_Info" />
+          <EntitySet Name="Customer_Invoice" EntityType="Self.Customer_Invoice" />
+          <EntitySet Name="Image_info" EntityType="Self.Image_info" />
+          <EntitySet Name="Invoice_Menu" EntityType="Self.Invoice_Menu" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="Pay_Info" EntityType="Self.Pay_Info" />
+          <EntitySet Name="Staff_info" EntityType="Self.Staff_info" />
+          <EntitySet Name="Status_info" EntityType="Self.Status_info" />
+          <AssociationSet Name="FK__Customer___Addre__182C9B23" Association="Self.FK__Customer___Addre__182C9B23">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Customer_Invoice" EntitySet="Customer_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Staff_inf__Addre__08EA5793" Association="Self.FK__Staff_inf__Addre__08EA5793">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Staff_info" EntitySet="Staff_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer___Custo__173876EA" Association="Self.FK__Customer___Custo__173876EA">
+            <End Role="Customer_Info" EntitySet="Customer_Info" />
+            <End Role="Customer_Invoice" EntitySet="Customer_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer___Pay_i__164452B1" Association="Self.FK__Customer___Pay_i__164452B1">
+            <End Role="Pay_Info" EntitySet="Pay_Info" />
+            <End Role="Customer_Invoice" EntitySet="Customer_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer___Staff__15502E78" Association="Self.FK__Customer___Staff__15502E78">
+            <End Role="Staff_info" EntitySet="Staff_info" />
+            <End Role="Customer_Invoice" EntitySet="Customer_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer___Statu__1920BF5C" Association="Self.FK__Customer___Statu__1920BF5C">
+            <End Role="Status_info" EntitySet="Status_info" />
+            <End Role="Customer_Invoice" EntitySet="Customer_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice_M__Invoi__276EDEB3" Association="Self.FK__Invoice_M__Invoi__276EDEB3">
+            <End Role="Customer_Invoice" EntitySet="Customer_Invoice" />
+            <End Role="Invoice_Menu" EntitySet="Invoice_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menu__Big_Image___22AA2996" Association="Self.FK__Menu__Big_Image___22AA2996">
+            <End Role="Image_info" EntitySet="Image_info" />
+            <End Role="Menu" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menu__Small_Imag__21B6055D" Association="Self.FK__Menu__Small_Imag__21B6055D">
+            <End Role="Image_info" EntitySet="Image_info" />
+            <End Role="Menu" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice_M__Menu___286302EC" Association="Self.FK__Invoice_M__Menu___286302EC">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Invoice_Menu" EntitySet="Invoice_Menu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RestaurantModelStoreContainer" CdmEntityContainer="RestaurantContext">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="RestaurantModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Address_id" ColumnName="Address_id" />
+                <ScalarProperty Name="Street_name" ColumnName="Street_name" />
+                <ScalarProperty Name="Street_number" ColumnName="Street_number" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="House_number" ColumnName="House_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_Info">
+            <EntityTypeMapping TypeName="RestaurantModel.Customer_Info">
+              <MappingFragment StoreEntitySet="Customer_Info">
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone3" ColumnName="Phone3" />
+                <ScalarProperty Name="Birthday_date" ColumnName="Birthday_date" />
+                <ScalarProperty Name="Address_id" ColumnName="Address_id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_Invoice">
+            <EntityTypeMapping TypeName="RestaurantModel.Customer_Invoice">
+              <MappingFragment StoreEntitySet="Customer_Invoice">
+                <ScalarProperty Name="Invoice_id" ColumnName="Invoice_id" />
+                <ScalarProperty Name="Staff_id" ColumnName="Staff_id" />
+                <ScalarProperty Name="Pay_id" ColumnName="Pay_id" />
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Address_id" ColumnName="Address_id" />
+                <ScalarProperty Name="Create_date" ColumnName="Create_date" />
+                <ScalarProperty Name="Deliver_time" ColumnName="Deliver_time" />
+                <ScalarProperty Name="Need_invoice" ColumnName="Need_invoice" />
+                <ScalarProperty Name="Invoice_head" ColumnName="Invoice_head" />
+                <ScalarProperty Name="Is_delivery" ColumnName="Is_delivery" />
+                <ScalarProperty Name="Status_id" ColumnName="Status_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Image_info">
+            <EntityTypeMapping TypeName="RestaurantModel.Image_info">
+              <MappingFragment StoreEntitySet="Image_info">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image_id" ColumnName="Image_id" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoice_Menu">
+            <EntityTypeMapping TypeName="RestaurantModel.Invoice_Menu">
+              <MappingFragment StoreEntitySet="Invoice_Menu">
+                <ScalarProperty Name="Invoice_menu_id" ColumnName="Invoice_menu_id" />
+                <ScalarProperty Name="Invoice_id" ColumnName="Invoice_id" />
+                <ScalarProperty Name="Menu_id" ColumnName="Menu_id" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="RestaurantModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Menu_id" ColumnName="Menu_id" />
+                <ScalarProperty Name="Menu_name" ColumnName="Menu_name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Flavor" ColumnName="Flavor" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Is_available" ColumnName="Is_available" />
+                <ScalarProperty Name="Is_new" ColumnName="Is_new" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Is_Activation" ColumnName="Is_Activation" />
+                <ScalarProperty Name="Create_date" ColumnName="Create_date" />
+                <ScalarProperty Name="Modified_date" ColumnName="Modified_date" />
+                <ScalarProperty Name="Small_Image_id" ColumnName="Small_Image_id" />
+                <ScalarProperty Name="Big_Image_id" ColumnName="Big_Image_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pay_Info">
+            <EntityTypeMapping TypeName="RestaurantModel.Pay_Info">
+              <MappingFragment StoreEntitySet="Pay_Info">
+                <ScalarProperty Name="Pay_id" ColumnName="Pay_id" />
+                <ScalarProperty Name="Pay_method" ColumnName="Pay_method" />
+                <ScalarProperty Name="Delivery_fee" ColumnName="Delivery_fee" />
+                <ScalarProperty Name="Menu_fee" ColumnName="Menu_fee" />
+                <ScalarProperty Name="Total_fee" ColumnName="Total_fee" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Create_date" ColumnName="Create_date" />
+                <ScalarProperty Name="Pay_date" ColumnName="Pay_date" />
+                <ScalarProperty Name="Pay_complete" ColumnName="Pay_complete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff_info">
+            <EntityTypeMapping TypeName="RestaurantModel.Staff_info">
+              <MappingFragment StoreEntitySet="Staff_info">
+                <ScalarProperty Name="Staff_id" ColumnName="Staff_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone3" ColumnName="Phone3" />
+                <ScalarProperty Name="Birthday_date" ColumnName="Birthday_date" />
+                <ScalarProperty Name="Address_id" ColumnName="Address_id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Create_date" ColumnName="Create_date" />
+                <ScalarProperty Name="Join_date" ColumnName="Join_date" />
+                <ScalarProperty Name="End_date" ColumnName="End_date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status_info">
+            <EntityTypeMapping TypeName="RestaurantModel.Status_info">
+              <MappingFragment StoreEntitySet="Status_info">
+                <ScalarProperty Name="Status_id" ColumnName="Status_id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Cause_description" ColumnName="Cause_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,176 @@
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Restaurant.dll.config
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Restaurant.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Restaurant.pdb
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Antlr3.Runtime.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\DotNetOpenAuth.AspNet.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\DotNetOpenAuth.Core.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\DotNetOpenAuth.OAuth.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\DotNetOpenAuth.OpenId.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\EntityFramework.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Microsoft.Data.Edm.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Microsoft.Data.OData.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Microsoft.Web.Infrastructure.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Microsoft.Web.WebPages.OAuth.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Newtonsoft.Json.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Net.Http.Formatting.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Spatial.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Helpers.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Http.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Http.OData.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Http.WebHost.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Mvc.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Optimization.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Razor.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.WebPages.Deployment.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.WebPages.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.WebPages.Razor.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\WebGrease.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\WebMatrix.Data.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\WebMatrix.WebData.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\EntityFramework.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Newtonsoft.Json.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Net.Http.Formatting.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Helpers.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Http.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Http.WebHost.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Mvc.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Razor.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.WebPages.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.WebPages.Deployment.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.WebPages.Razor.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\WebMatrix.Data.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Microsoft.Web.WebPages.OAuth.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\WebMatrix.WebData.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\DotNetOpenAuth.AspNet.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\DotNetOpenAuth.Core.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\DotNetOpenAuth.OAuth.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\DotNetOpenAuth.OpenId.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Web.Http.OData.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Microsoft.Data.Edm.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\Microsoft.Data.OData.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\System.Spatial.xml
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\de\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\es\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\it\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\de\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\es\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\fr\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\it\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\ja\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\ko\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\ru\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\de\System.Spatial.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\es\System.Spatial.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\fr\System.Spatial.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\it\System.Spatial.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\ja\System.Spatial.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\ko\System.Spatial.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\ru\System.Spatial.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\zh-Hans\System.Spatial.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\bin\zh-Hant\System.Spatial.resources.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\obj\Debug\Restaurant.csprojResolveAssemblyReference.cache
+C:\JOB\hujianguo\code\Restaurant\Restaurant\obj\Debug\Restaurant.dll
+C:\JOB\hujianguo\code\Restaurant\Restaurant\obj\Debug\Restaurant.pdb
+C:\JOB\hujianguo\code\Restaurant\Restaurant\obj\Debug\Restaurant.App_GlobalResources.Restaurants.resources
+C:\JOB\hujianguo\code\Restaurant\Restaurant\obj\Debug\Restaurant.csproj.GenerateResource.Cache
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Restaurant.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Restaurant.pdb
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Antlr3.Runtime.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\DotNetOpenAuth.AspNet.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\DotNetOpenAuth.Core.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\DotNetOpenAuth.OAuth.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\DotNetOpenAuth.OpenId.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\EntityFramework.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Microsoft.Data.Edm.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Microsoft.Data.OData.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Microsoft.Web.Infrastructure.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Microsoft.Web.WebPages.OAuth.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Newtonsoft.Json.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Net.Http.Formatting.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Spatial.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Helpers.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Http.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Http.OData.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Http.WebHost.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Mvc.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Optimization.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Razor.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.WebPages.Deployment.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.WebPages.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.WebPages.Razor.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\WebGrease.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\WebMatrix.Data.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\WebMatrix.WebData.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\EntityFramework.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Newtonsoft.Json.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Net.Http.Formatting.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Helpers.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Http.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Http.WebHost.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Mvc.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Razor.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.WebPages.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.WebPages.Deployment.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.WebPages.Razor.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\WebMatrix.Data.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Microsoft.Web.WebPages.OAuth.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\WebMatrix.WebData.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\DotNetOpenAuth.AspNet.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\DotNetOpenAuth.Core.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\DotNetOpenAuth.OAuth.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\DotNetOpenAuth.OpenId.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Web.Http.OData.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Microsoft.Data.Edm.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\Microsoft.Data.OData.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\System.Spatial.xml
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\zh-Hans\WebMatrix.Data.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\de\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\es\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\it\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\de\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\es\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\fr\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\it\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\ja\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\ko\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\ru\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\de\System.Spatial.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\es\System.Spatial.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\fr\System.Spatial.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\it\System.Spatial.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\ja\System.Spatial.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\ko\System.Spatial.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\ru\System.Spatial.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\zh-Hans\System.Spatial.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\bin\zh-Hant\System.Spatial.resources.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\obj\Debug\Restaurant.App_GlobalResources.Restaurants.resources
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\obj\Debug\Restaurant.csproj.GenerateResource.Cache
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\obj\Debug\Restaurant.dll
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\obj\Debug\Restaurant.pdb
+C:\JOB\hujianguo\test for visual studio 2012\Restaurant\Restaurant\obj\Debug\Restaurant.csprojResolveAssemblyReference.cache
