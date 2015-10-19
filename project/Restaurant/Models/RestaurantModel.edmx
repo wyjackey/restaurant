@@ -55,6 +55,10 @@
             <End Role="Address" EntitySet="Address" />
             <End Role="Staff_info" EntitySet="Staff_info" />
           </AssociationSet>
+          <AssociationSet Name="fk_Customer_Address" Association="RestaurantModel.Store.fk_Customer_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Customer_Info" EntitySet="Customer_Info" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Address">
           <Key>
@@ -74,7 +78,7 @@
             <PropertyRef Name="Customer_id" />
           </Key>
           <Property Name="Customer_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="smallint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" />
           <Property Name="Phone1" Type="nvarchar" MaxLength="64" />
           <Property Name="Phone2" Type="nvarchar" MaxLength="64" />
           <Property Name="Phone3" Type="nvarchar" MaxLength="64" />
@@ -298,6 +302,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_Customer_Address">
+          <End Role="Address" Type="RestaurantModel.Store.Address" Multiplicity="0..1" />
+          <End Role="Customer_Info" Type="RestaurantModel.Store.Customer_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Address_id" />
+            </Principal>
+            <Dependent Role="Customer_Info">
+              <PropertyRef Name="Address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -316,13 +332,14 @@
           <Property Name="House_number" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customer_Invoice" Relationship="Self.FK__Customer___Addre__182C9B23" FromRole="Address" ToRole="Customer_Invoice" />
           <NavigationProperty Name="Staff_info" Relationship="Self.FK__Staff_inf__Addre__08EA5793" FromRole="Address" ToRole="Staff_info" />
+          <NavigationProperty Name="Customer_Info" Relationship="Self.fk_Customer_Address" FromRole="Address" ToRole="Customer_Info" />
         </EntityType>
         <EntityType Name="Customer_Info">
           <Key>
             <PropertyRef Name="Customer_id" />
           </Key>
           <Property Name="Customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="Int16" Nullable="false" />
+          <Property Name="Name" Type="String" />
           <Property Name="Phone1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="Phone2" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="Phone3" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
@@ -332,6 +349,7 @@
           <Property Name="Gender" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
           <Property Name="Age" Type="Int32" />
           <NavigationProperty Name="Customer_Invoice" Relationship="Self.FK__Customer___Custo__173876EA" FromRole="Customer_Info" ToRole="Customer_Invoice" />
+          <NavigationProperty Name="Address" Relationship="Self.fk_Customer_Address" FromRole="Customer_Info" ToRole="Address" />
         </EntityType>
         <EntityType Name="Customer_Invoice">
           <Key>
@@ -564,6 +582,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_Customer_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Customer_Info" Type="Self.Customer_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Address_id" />
+            </Principal>
+            <Dependent Role="Customer_Info">
+              <PropertyRef Name="Address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="RestaurantContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Addresses" EntityType="Self.Address" />
           <EntitySet Name="Customer_Info" EntityType="Self.Customer_Info" />
@@ -613,6 +643,10 @@
           <AssociationSet Name="FK__Invoice_M__Menu___286302EC" Association="Self.FK__Invoice_M__Menu___286302EC">
             <End Role="Menu" EntitySet="Menus" />
             <End Role="Invoice_Menu" EntitySet="Invoice_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Customer_Address" Association="Self.fk_Customer_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Customer_Info" EntitySet="Customer_Info" />
           </AssociationSet>
         </EntityContainer>
       </Schema>

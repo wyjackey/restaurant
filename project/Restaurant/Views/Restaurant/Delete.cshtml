@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Delete";
+    string bigImagePath = @Model.Image_info1.Path.ToString().Remove(0, 1) + "/" + @Model.Image_info1.Name;
+    string smallImagePath = @Model.Image_info.Path.ToString().Remove(0, 1) + "/" + @Model.Image_info.Name;
 }
 
 <h2>Delete</h2>
@@ -95,23 +97,23 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Image_info1.Path)
+         菜单大图标
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Image_info1.Path)
+ 
+    <div style="padding:10px;">
+        <img src="@bigImagePath" alt="@Model.Image_info1.Name" width="300" />
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Image_info.Path)
+         菜单小图标
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Image_info.Path)
+    <div style="padding:10px;">
+        <img src="@smallImagePath" alt="@Model.Image_info.Name" width="300" />
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
         <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to List", "MenuIndex")
     </p>
 }

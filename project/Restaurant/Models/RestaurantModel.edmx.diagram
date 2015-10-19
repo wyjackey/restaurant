@@ -24,6 +24,7 @@
         <AssociationConnector Association="RestaurantModel.FK__Menu__Big_Image___22AA2996" ManuallyRouted="false" />
         <AssociationConnector Association="RestaurantModel.FK__Menu__Small_Imag__21B6055D" ManuallyRouted="false" />
         <AssociationConnector Association="RestaurantModel.FK__Invoice_M__Menu___286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.fk_Customer_Address" ManuallyRouted="false"  />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

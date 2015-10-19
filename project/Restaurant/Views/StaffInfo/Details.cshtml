@@ -1,0 +1,150 @@
+﻿@model Restaurant.Models.Staff_info
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Staff</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Staff_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Staff_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Age)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Age)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Birthday_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Birthday_date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Gender)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Gender)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Join_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Join_date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.End_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.End_date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Phone1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Phone2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Phone3)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone3)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address.Country)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address.Country)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address.Province)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address.Province)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address.City)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address.City)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address.Street_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address.Street_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address.Street_number)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address.Street_number)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address.House_number)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address.House_number)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address.Postcode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address.Postcode)
+    </div>
+
+    
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.Staff_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

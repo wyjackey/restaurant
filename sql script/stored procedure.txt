@@ -6,16 +6,23 @@ uses output variable @Studentname to collect the student name returns by the
 stored procedure
 */
 Create  PROCEDURE GetAllMenus
---(
-
---@studentid INT                       --Input parameter ,  Studentid of the student
-----@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
---)
 AS
 BEGIN
 SELECT * FROM Menu
 END
 
+Create  PROCEDURE GetStaffs
+AS
+BEGIN
+SELECT * FROM Staff_info
+END
+
+
+Create  PROCEDURE GetCustomers
+AS
+BEGIN
+SELECT * FROM Customer_Info
+END
 
 Create  PROCEDURE GetMaxID
 AS

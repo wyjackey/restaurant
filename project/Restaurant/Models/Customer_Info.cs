@@ -20,7 +20,7 @@ namespace Restaurant.Models
         }
     
         public int Customer_id { get; set; }
-        public short Name { get; set; }
+        public string Name { get; set; }
         public string Phone1 { get; set; }
         public string Phone2 { get; set; }
         public string Phone3 { get; set; }
@@ -29,7 +29,8 @@ namespace Restaurant.Models
         public string Email { get; set; }
         public string Gender { get; set; }
         public Nullable<int> Age { get; set; }
-    
+
+        public virtual Address Address { get; set; }
         public virtual ICollection<Customer_Invoice> Customer_Invoice { get; set; }
     }
 }

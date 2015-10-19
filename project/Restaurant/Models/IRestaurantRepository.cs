@@ -8,6 +8,8 @@ namespace Restaurant.Models
     public interface IRestaurantRepository : IDisposable
     {
         IEnumerable<Menu> GetMenus();
+        IEnumerable<Staff_info> GetStaffs();
+        IEnumerable<Customer_Info> GetCustomers();
         //table Menu
         Menu GetMenuByID(int menuID);
         void InsertMenu(Menu menu);

@@ -18,6 +18,7 @@ namespace Restaurant.Models
         {
             this.Customer_Invoice = new HashSet<Customer_Invoice>();
             this.Staff_info = new HashSet<Staff_info>();
+            this.Customer_Info = new HashSet<Customer_Info>();
         }
     
         public int Address_id { get; set; }
@@ -31,5 +32,6 @@ namespace Restaurant.Models
     
         public virtual ICollection<Customer_Invoice> Customer_Invoice { get; set; }
         public virtual ICollection<Staff_info> Staff_info { get; set; }
+        public virtual ICollection<Customer_Info> Customer_Info { get; set; }
     }
 }

@@ -51,12 +51,12 @@ END
 CREATE TABLE dbo.Customer_Info
 (
     Customer_id int NOT NULL Identity primary key
-    ,Name smallint NOT NULL
+    ,Name NVARCHAR(64) NOT NULL
     ,Phone1 NVARCHAR(64) NULL
     ,Phone2 NVARCHAR(64) NULL
     ,Phone3 NVARCHAR(64) NULL
     ,Birthday_date datetime NULL
-    ,Address_id int NULL
+    ,Address_id int NULL FOREIGN KEY REFERENCES Address(Address_id)
     ,Email NVARCHAR(128) NULL
     ,Gender NVARCHAR(32) NULL
     ,Age int NULL

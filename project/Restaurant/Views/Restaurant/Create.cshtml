@@ -1,7 +1,7 @@
 ﻿@model Restaurant.Models.Menu
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Menu";
 }
 
 <h2>Create</h2>
@@ -95,19 +95,8 @@
             @Html.ValidationMessageFor(model => model.Is_Activation)
         </div>
 
-        <div>@Restaurant.App_GlobalResources.Restaurants.UploadMenuBigPicture</div>
-        <input type="file" name="smallPicture" />
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Image_info.Description)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Image_info.Description)
-            @Html.ValidationMessageFor(model => model.Image_info.Description)
-        </div>
-
         <div>@Restaurant.App_GlobalResources.Restaurants.UploadMenuSmallPicture</div>
-        <input type="file" name="bigPicture" />
+        <input type="file" name="smallPicture" />
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Image_info1.Description)
@@ -117,6 +106,17 @@
             @Html.ValidationMessageFor(model => model.Image_info1.Description)
         </div>
 
+        <div>@Restaurant.App_GlobalResources.Restaurants.UploadMenuBigPicture</div>
+        <input type="file" name="bigPicture" />
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Image_info.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Image_info.Description)
+            @Html.ValidationMessageFor(model => model.Image_info.Description)
+        </div>
+
         <p>
             <input type="submit" value="Create" />
         </p>
@@ -124,7 +124,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "MenuIndex")
 </div>
 
 @section Scripts {

@@ -20,6 +20,16 @@ namespace Restaurant.Models
             return context.Database.SqlQuery<Models.Menu>("GetAllMenus").ToList();
         }
 
+        public IEnumerable<Staff_info> GetStaffs()
+        {
+            return context.Database.SqlQuery<Models.Staff_info>("GetStaffs").ToList();
+        }
+
+        public IEnumerable<Customer_Info> GetCustomers()
+        {
+            return context.Database.SqlQuery<Models.Customer_Info>("GetCustomers").ToList();
+        }
+
         public Menu GetMenuByID(int id)
         {
             var idParam = new System.Data.SqlClient.SqlParameter
@@ -68,7 +78,9 @@ namespace Restaurant.Models
 
         public void UpdateMenu(Menu menu)
         {
-            context.Entry(menu).State = EntityState.Modified;
+            context.Entry(menu.Image_info).State = EntityState.Modified;
+            context.Entry(menu.Image_info1).State = EntityState.Modified;
+            context.Entry(menu).State = EntityState.Modified;  
         }
 
         public Address GetAddressByID(int id)

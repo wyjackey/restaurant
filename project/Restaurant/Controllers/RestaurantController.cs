@@ -28,7 +28,7 @@ namespace Restaurant.Controllers
         //
         // GET: /Restaurant/
 
-        public ActionResult Index()
+        public ActionResult MenuIndex()
         {
             //var menus = db.Menus.Include(m => m.Image_info).Include(m => m.Image_info1);
             var menus = repo.GetMenus();
@@ -71,13 +71,6 @@ namespace Restaurant.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Menus.Add(menu);
-                //db.SaveChanges();
-
-                // Get the current directory. 
-
-                //Image_info smallPicture = new Image_info();
-                //Image_info bigPicture = new Image_info();
 
                 try
                 {
@@ -97,14 +90,118 @@ namespace Restaurant.Controllers
                         var newPath = Path.Combine(Server.MapPath(target), fileName);
                         file.SaveAs(newPath);
 
+                        menu.Image_info1.Name = fileName;
+                        menu.Image_info1.Path = target;
+                    }
+
+
+                    file = Request.Files[1];
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+
+                        string target = @"~/Images/profile/" + menu.Menu_name + GetHashCode().ToString();
+
+                        if (!Directory.Exists(Server.MapPath(target)))
+                        {
+                            Directory.CreateDirectory(Server.MapPath(target));
+                        }
+                        var newPath = Path.Combine(Server.MapPath(target), fileName);
+                        file.SaveAs(newPath);
+
+                        menu.Image_info.Name = fileName;
+                        menu.Image_info.Path = target;
+                    }
+
+                    menu.Create_date = System.DateTime.Now;
+                    menu.Modified_date = System.DateTime.Now;
+                    repo.InsertMenu(menu);
+                    repo.Save();
+                    return RedirectToAction("MenuIndex");
+                }
+                catch (Exception ex)
+                {
+                    //get the innermost exception
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
+                    ModelState.AddModelError("", "error on create: " + ex.GetBaseException().Message);
+                }
+            }
+
+            return View(menu);
+        }
+
+        //
+        // GET: /Restaurant/Edit/5
+
+        public ActionResult Edit(int id = 0)
+        {
+            //Menu menu = db.Menus.Find(id);
+            Menu menu = repo.GetMenuByID(id);
+            if (menu == null)
+            {
+                return HttpNotFound();
+            }
+            menu.Image_info = repo.GetImageInfoByID(Convert.ToInt32(menu.Big_Image_id));
+            menu.Image_info1 = repo.GetImageInfoByID(Convert.ToInt32(menu.Small_Image_id));
+            Session["menu"] = menu;
+            return View(menu);
+        }
+
+        //
+        // POST: /Restaurant/Edit/5
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Menu menu, HttpPostedFileBase file)
+        {
+            if (ModelState.IsValid)
+            {
+
+                try
+                {
+                    Image_info bigImage = new Image_info();
+                    Image_info smallImage = new Image_info();
+                    Menu oldMenu = (Menu)Session["menu"];
+                    menu.Create_date = oldMenu.Create_date;
+                    menu.Modified_date = System.DateTime.Now;
+                    menu.Big_Image_id = oldMenu.Big_Image_id;
+                    menu.Menu_id = oldMenu.Menu_id;
+                    menu.Small_Image_id = oldMenu.Small_Image_id;
+                    oldMenu.Image_info.Description = menu.Image_info.Description;
+                    oldMenu.Image_info1.Description = menu.Image_info1.Description;
+                    menu.Image_info = oldMenu.Image_info;
+                    menu.Image_info1 = oldMenu.Image_info1;
+                    file = Request.Files[0];
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        //smallPicture.Name = fileName;
+                        if (fileName == null)
+                        {
+                            //menu.Image_info.Image_id
+                        }
+
+                        string target = @"~/Images/profile/" + menu.Menu_name + GetHashCode().ToString();
+
+                        if (!Directory.Exists(Server.MapPath(target)))
+                        {
+                            Directory.CreateDirectory(Server.MapPath(target));
+                        }
+                        var newPath = Path.Combine(Server.MapPath(target), fileName);
+                        file.SaveAs(newPath);
+
                         //smallPicture.Path = newPath;
                         //smallPicture.Description = menu.Image_info1.Description;
 
                         //repo.InsertImageInfo(smallPicture);
                         //repo.Save();
 
-                        menu.Image_info.Name = fileName;
-                        menu.Image_info.Path = target;
+                        menu.Image_info1.Name = fileName;
+                        menu.Image_info1.Path = target;
 
                         //menu.Small_Image_id = repo.GetImageIDByName(smallPicture.Name);
                     }
@@ -131,16 +228,15 @@ namespace Restaurant.Controllers
 
                         //repo.InsertImageInfo(bigPicture);
                         //repo.Save();
-                        menu.Image_info1.Name = fileName;
-                        menu.Image_info1.Path = target;
+                        menu.Image_info.Name = fileName;
+                        menu.Image_info.Path = target;
                         //menu.Big_Image_id = repo.GetImageIDByName(bigPicture.Name);
                     }
-
-                    menu.Create_date = System.DateTime.Now;
-                    menu.Modified_date = System.DateTime.Now;
-                    repo.InsertMenu(menu);
+  
+                    repo.UpdateMenu(menu);
+                    //repo.InsertMenu(menu);
                     repo.Save();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("MenuIndex");
                 }
                 catch (Exception ex)
                 {
@@ -152,43 +248,6 @@ namespace Restaurant.Controllers
                     ModelState.AddModelError("", "error on create: " + ex.GetBaseException().Message);
                 }
             }
-
-            //ViewBag.Big_Image_id = new SelectList(db.Image_info, "Image_id", "Path", menu.Big_Image_id);
-            //ViewBag.Small_Image_id = new SelectList(db.Image_info, "Image_id", "Path", menu.Small_Image_id);
-            return View(menu);
-        }
-
-        //
-        // GET: /Restaurant/Edit/5
-
-        public ActionResult Edit(int id = 0)
-        {
-            //Menu menu = db.Menus.Find(id);
-            Menu menu = repo.GetMenuByID(id);
-            if (menu == null)
-            {
-                return HttpNotFound();
-            }
-            //ViewBag.Big_Image_id = new SelectList(db.Image_info, "Image_id", "Path", menu.Big_Image_id);
-            //ViewBag.Small_Image_id = new SelectList(db.Image_info, "Image_id", "Path", menu.Small_Image_id);
-            return View(menu);
-        }
-
-        //
-        // POST: /Restaurant/Edit/5
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Menu menu)
-        {
-            if (ModelState.IsValid)
-            {
-                repo.UpdateMenu(menu);
-                repo.Save();
-                //db.Entry(menu).State = EntityState.Modified;
-                //db.SaveChanges();
-                return RedirectToAction("Index");
-            }
             //ViewBag.Big_Image_id = new SelectList(db.Image_info, "Image_id", "Path", menu.Big_Image_id);
             //ViewBag.Small_Image_id = new SelectList(db.Image_info, "Image_id", "Path", menu.Small_Image_id);
             return View(menu);
@@ -199,8 +258,10 @@ namespace Restaurant.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            //Menu menu = db.Menus.Find(id);
             Menu menu = repo.GetMenuByID(id);
+            menu.Image_info1 = repo.GetImageInfoByID(Convert.ToInt32(menu.Big_Image_id));
+            menu.Image_info = repo.GetImageInfoByID(Convert.ToInt32(menu.Small_Image_id));
+
             if (menu == null)
             {
                 return HttpNotFound();
@@ -215,12 +276,12 @@ namespace Restaurant.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            Menu menu = repo.GetMenuByID(id);
+            repo.DeleteImageInfo(Convert.ToInt32(menu.Big_Image_id));
+            repo.DeleteImageInfo(Convert.ToInt32(menu.Small_Image_id));
             repo.DeleteMenu(id);
             repo.Save();
-            //Menu menu = db.Menus.Find(id);
-            //db.Menus.Remove(menu);
-            //db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("MenuIndex");
         }
 
         protected override void Dispose(bool disposing)
