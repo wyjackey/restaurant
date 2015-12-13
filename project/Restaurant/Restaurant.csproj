@@ -223,6 +223,9 @@
     <Compile Include="Models\Menu.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Menu_type.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Pay_Info.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
@@ -230,6 +233,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RestaurantModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RestaurantModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RestaurantModel.Designer.cs">
       <AutoGen>True</AutoGen>

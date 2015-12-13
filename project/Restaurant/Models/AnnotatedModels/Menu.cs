@@ -29,39 +29,6 @@ namespace Restaurant.Models
     /// </summary>
     public class MenuMetadata
     {
-        //[ScaffoldColumn(false)]
-        //[Required(ErrorMessageResourceName = "Required",
-        //   ErrorMessageResourceType = typeof(Restaurant))]
-        //[Display(Name = "orderId", ResourceType = typeof(Translations))]
-        //public int orderId { get; set; }
-        //[ScaffoldColumn(false)]
-        //[Display(Name = "orderDate", ResourceType = typeof(Translations))]
-        //public System.DateTime orderDate { get; set; }
-        //public string userName { get; set; }
-        //[Required(ErrorMessageResourceName = "Required",
-        //    ErrorMessageResourceType = typeof(Translations))]
-        //[Display(Name = "firstName", ResourceType = typeof(Translations))]
-        //public string firstName { get; set; }
-        //[Display(Name = "lastName", ResourceType = typeof(Translations))]
-        //[Required(ErrorMessageResourceName = "Required",
-        //    ErrorMessageResourceType = typeof(Translations))]
-        //[StringLength(20)]
-        //public string lastName { get; set; }
-        //public string address { get; set; }
-        //public string city { get; set; }
-        //public string provinceCode { get; set; }
-        //[Remote("PostalEdit", "Checkout")]
-        //public string postalCode { get; set; }
-        //public string countryCode { get; set; }
-        //[RegularExpression(@"^\d{3}-\d{3}-\d{4}$",
-        //    ErrorMessage = "{0} does not match a phone pattern 123-123-1234")]
-        //[Required(ErrorMessageResourceName = "Required",
-        //    ErrorMessageResourceType = typeof(Translations))]
-        //public string phone { get; set; }
-        //public string email { get; set; }
-        //public float total { get; set; }
-
-
         [ScaffoldColumn(false)]
         [Required(ErrorMessageResourceName = "Required",
            ErrorMessageResourceType = typeof(Restaurants))]

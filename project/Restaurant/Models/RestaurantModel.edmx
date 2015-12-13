@@ -12,6 +12,7 @@
           <EntitySet Name="Image_info" EntityType="RestaurantModel.Store.Image_info" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Invoice_Menu" EntityType="RestaurantModel.Store.Invoice_Menu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Menu" EntityType="RestaurantModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Menu_type" EntityType="RestaurantModel.Store.Menu_type" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Pay_Info" EntityType="RestaurantModel.Store.Pay_Info" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Staff_info" EntityType="RestaurantModel.Store.Staff_info" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Status_info" EntityType="RestaurantModel.Store.Status_info" store:Type="Tables" Schema="dbo" />
@@ -58,6 +59,10 @@
           <AssociationSet Name="fk_Customer_Address" Association="RestaurantModel.Store.fk_Customer_Address">
             <End Role="Address" EntitySet="Address" />
             <End Role="Customer_Info" EntitySet="Customer_Info" />
+          </AssociationSet>
+          <AssociationSet Name="fk_menu_menu_type" Association="RestaurantModel.Store.fk_menu_menu_type">
+            <End Role="Menu_type" EntitySet="Menu_type" />
+            <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Address">
@@ -132,14 +137,22 @@
           <Property Name="Description" Type="nvarchar" MaxLength="1024" />
           <Property Name="Flavor" Type="nvarchar" MaxLength="64" />
           <Property Name="Rating" Type="nvarchar" MaxLength="64" />
-          <Property Name="Is_available" Type="nvarchar" MaxLength="32" />
-          <Property Name="Is_new" Type="nvarchar" MaxLength="32" />
+          <Property Name="Is_available" Type="bit" />
+          <Property Name="Is_new" Type="bit" />
           <Property Name="Quantity" Type="int" />
-          <Property Name="Is_Activation" Type="nvarchar" MaxLength="32" />
+          <Property Name="Is_Activation" Type="bit" />
           <Property Name="Create_date" Type="datetime" />
           <Property Name="Modified_date" Type="datetime" />
           <Property Name="Small_Image_id" Type="int" />
           <Property Name="Big_Image_id" Type="int" />
+          <Property Name="menu_type_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Menu_type">
+          <Key>
+            <PropertyRef Name="menu_type_id" />
+          </Key>
+          <Property Name="menu_type_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="type_name" Type="nvarchar" MaxLength="512" />
         </EntityType>
         <EntityType Name="Pay_Info">
           <Key>
@@ -314,6 +327,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_menu_menu_type">
+          <End Role="Menu_type" Type="RestaurantModel.Store.Menu_type" Multiplicity="0..1" />
+          <End Role="Menu" Type="RestaurantModel.Store.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_type">
+              <PropertyRef Name="menu_type_id" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="menu_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -339,7 +364,7 @@
             <PropertyRef Name="Customer_id" />
           </Key>
           <Property Name="Customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" />
+          <Property Name="Name" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
           <Property Name="Phone1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="Phone2" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="Phone3" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
@@ -405,10 +430,10 @@
           <Property Name="Description" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
           <Property Name="Flavor" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="Rating" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="Is_available" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Name="Is_new" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Is_available" Type="Boolean" />
+          <Property Name="Is_new" Type="Boolean" />
           <Property Name="Quantity" Type="Int32" />
-          <Property Name="Is_Activation" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Is_Activation" Type="Boolean" />
           <Property Name="Create_date" Type="DateTime" Precision="3" />
           <Property Name="Modified_date" Type="DateTime" Precision="3" />
           <Property Name="Small_Image_id" Type="Int32" />
@@ -416,6 +441,8 @@
           <NavigationProperty Name="Image_info" Relationship="Self.FK__Menu__Big_Image___22AA2996" FromRole="Menu" ToRole="Image_info" />
           <NavigationProperty Name="Image_info1" Relationship="Self.FK__Menu__Small_Imag__21B6055D" FromRole="Menu" ToRole="Image_info" />
           <NavigationProperty Name="Invoice_Menu" Relationship="Self.FK__Invoice_M__Menu___286302EC" FromRole="Menu" ToRole="Invoice_Menu" />
+          <Property Type="Int32" Name="menu_type_id" />
+          <NavigationProperty Name="Menu_type" Relationship="RestaurantModel.fk_menu_menu_type" FromRole="Menu" ToRole="Menu_type" />
         </EntityType>
         <EntityType Name="Pay_Info">
           <Key>
@@ -648,7 +675,32 @@
             <End Role="Address" EntitySet="Addresses" />
             <End Role="Customer_Info" EntitySet="Customer_Info" />
           </AssociationSet>
+          <EntitySet Name="Menu_type" EntityType="RestaurantModel.Menu_type" />
+          <AssociationSet Name="fk_menu_menu_type" Association="RestaurantModel.fk_menu_menu_type">
+            <End Role="Menu_type" EntitySet="Menu_type" />
+            <End Role="Menu" EntitySet="Menus" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Menu_type">
+          <Key>
+            <PropertyRef Name="menu_type_id" />
+          </Key>
+          <Property Type="Int32" Name="menu_type_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="type_name" MaxLength="512" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Menus" Relationship="RestaurantModel.fk_menu_menu_type" FromRole="Menu_type" ToRole="Menu" />
+        </EntityType>
+        <Association Name="fk_menu_menu_type">
+          <End Type="RestaurantModel.Menu_type" Role="Menu_type" Multiplicity="0..1" />
+          <End Type="RestaurantModel.Menu" Role="Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_type">
+              <PropertyRef Name="menu_type_id" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="menu_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association> 
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -725,6 +777,7 @@
           <EntitySetMapping Name="Menus">
             <EntityTypeMapping TypeName="RestaurantModel.Menu">
               <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="menu_type_id" ColumnName="menu_type_id" />
                 <ScalarProperty Name="Menu_id" ColumnName="Menu_id" />
                 <ScalarProperty Name="Menu_name" ColumnName="Menu_name" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -783,6 +836,14 @@
                 <ScalarProperty Name="Status_id" ColumnName="Status_id" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Cause_description" ColumnName="Cause_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu_type">
+            <EntityTypeMapping TypeName="RestaurantModel.Menu_type">
+              <MappingFragment StoreEntitySet="Menu_type">
+                <ScalarProperty Name="type_name" ColumnName="type_name" />
+                <ScalarProperty Name="menu_type_id" ColumnName="menu_type_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

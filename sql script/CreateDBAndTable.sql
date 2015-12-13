@@ -124,7 +124,7 @@ CREATE TABLE dbo.Customer_Invoice
 	,Deliver_time datetime NULL
 	,Need_invoice bit
 	,Invoice_head NVARCHAR(512) NULL
-	,Is_delivery NVARCHAR(32) NULL
+	,Is_delivery bit
 	,Status_id int FOREIGN KEY REFERENCES Status_info(Status_id)  
 );
 
@@ -156,6 +156,18 @@ CREATE TABLE dbo.Image_info
 );
 
 
+IF EXISTS(SELECT * from sys.tables WHERE name='Menu_type')
+BEGIN
+    DROP TABLE Menu_type;
+END
+
+--Create a new tables called Menu.
+CREATE TABLE dbo.Menu_type
+(
+    menu_type_id int NOT NULL Identity primary key
+	,type_name NVARCHAR(512) 
+);
+
 IF EXISTS(SELECT * from sys.tables WHERE name='Menu')
 BEGIN
     DROP TABLE Menu;
@@ -170,10 +182,11 @@ CREATE TABLE dbo.Menu
 	,Description  NVARCHAR(1024) 
 	,Flavor NVARCHAR(64) 
 	,Rating  NVARCHAR(64)   
-	,Is_available   NVARCHAR(32) 
-	,Is_new  NVARCHAR(32) 
+	,Is_available   bit 
+	,Is_new  bit 
+	,menu_type_id int FOREIGN KEY REFERENCES Menu_type(menu_type_id)
 	,Quantity int
-	,Is_Activation  NVARCHAR(32) 
+	,Is_Activation  bit 
 	,Create_date datetime NULL
 	,Modified_date datetime NULL
 	,Small_Image_id int FOREIGN KEY REFERENCES Image_info(Image_id)

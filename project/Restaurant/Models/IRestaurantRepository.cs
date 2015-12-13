@@ -42,6 +42,14 @@ namespace Restaurant.Models
         void DeleteImageInfo(int imageInfoID);
         void UpdateImageInfo(Image_info imageInfo);
         int GetImageIDByName(string imageName);
+
+        //table Menu_type
+        Menu_type GetMenuTypeByID(int menuTypeId);
+        void InsertMenuType(Menu_type menuType);
+        void DeleteMenuType(int menuTypeID);
+        void UpdateMenuType(Menu_type menuType);
+        int GetMenuTypeIDByName(string menuTypeName);
+
         //table Invoice_Menu
         Invoice_Menu GetInvoiceMenuByID(int invoiceMenuID);
         void InsertInvoiceMenu(Invoice_Menu invoiceMenu);

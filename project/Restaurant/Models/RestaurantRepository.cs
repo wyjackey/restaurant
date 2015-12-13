@@ -253,6 +253,55 @@ namespace Restaurant.Models
             context.Entry(imageInfo).State = EntityState.Modified;
         }
 
+        //table Menu_type
+        public Menu_type GetMenuTypeByID(int menuTypeId)
+        {
+            var idParam = new System.Data.SqlClient.SqlParameter
+            {
+                ParameterName = "@id",
+                Value = menuTypeId
+            };
+            Menu_type result = context.Database.SqlQuery<Models.Menu_type>("GetMenuTypeByID @id", idParam).FirstOrDefault() as Menu_type;
+
+            return result;
+        }
+
+        public int GetMenuTypeIDByName(string menuTypeName)
+        {
+            if (!String.IsNullOrEmpty(menuTypeName))
+            {
+                var idParam = new System.Data.SqlClient.SqlParameter
+                {
+                    ParameterName = "@menuTypeName",
+                    Value = menuTypeName
+                };
+
+                int results = Convert.ToInt32(context.Database.SqlQuery<int>("GetMenuTypeIDByName  @menuTypeName", idParam).FirstOrDefault());
+                return results;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        public void InsertMenuType(Menu_type menuType)
+        {
+            int id = Convert.ToInt32(context.Database.SqlQuery<int>("getMenuTypeMaxId").FirstOrDefault()) + 1;
+            context.Menu_type.Add(menuType);
+        }
+
+        public void DeleteMenuType(int menuTypeID)
+        {
+            Menu_type menuType = context.Menu_type.Find(menuTypeID);
+            context.Menu_type.Remove(menuType);
+        }
+
+        public void UpdateMenuType(Menu_type menuType)
+        {
+            context.Entry(menuType).State = EntityState.Modified;
+        }
+
         //table Invoice_Menu
         public Invoice_Menu GetInvoiceMenuByID(int invoiceMenuID)
         {

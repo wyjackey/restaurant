@@ -34,5 +34,6 @@ namespace Restaurant.Models
         public DbSet<Pay_Info> Pay_Info { get; set; }
         public DbSet<Staff_info> Staff_info { get; set; }
         public DbSet<Status_info> Status_info { get; set; }
+        public DbSet<Menu_type> Menu_type { get; set; }
     }
 }

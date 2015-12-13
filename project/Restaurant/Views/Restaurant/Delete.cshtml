@@ -18,7 +18,12 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Menu_id)
     </div>
-
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Menu_type.type_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Menu_type.type_name)
+    </div>
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Menu_name)
     </div>

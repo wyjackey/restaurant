@@ -307,19 +307,54 @@ use Restaurant
 ALTER TABLE Image_info
 ADD  Name NVARCHAR(128) not null
 
-Create  PROCEDURE GetImageIDByName
+Create  PROCEDURE GetMenuTypeByName
 (
 
-@imageName NVARCHAR(256)                       --Input parameter ,  Studentid of the student
+@typeName NVARCHAR(256)                       --Input parameter ,  Studentid of the student
 )
 AS
 BEGIN
 
-SELECT Image_id FROM Image_info 
-WHERE Name = @imageName
+SELECT Image_id FROM Menu_type 
+WHERE type_name = @typeName
 
 END
 
+
+
+Create  PROCEDURE GetMenuTypeByID
+(
+
+@menuTypeId int                       --Input parameter ,  Studentid of the student
+--@studentname NVARCHAR(200)  OUT        -- Out parameter declared with the help of OUT keyword
+)
+AS
+BEGIN
+
+SELECT * FROM Menu_type
+WHERE menu_type_id = @menuTypeId
+
+END
+
+go
+/****** object:  storedprocedure [dbo].[getimageinfomaxid]    script date: 09/06/2015 11:14:50 ******/
+set ansi_nulls on
+go
+set quoted_identifier on
+go
+alter  procedure [dbo].[getimageinfomaxid]
+--(
+
+--@staffid int                       --input parameter ,  studentid of the student
+--@studentname nvarchar(200)  out        -- out parameter declared with the help of out keyword
+--)
+as
+begin
+
+select case when (max(image_id) is null) then 0 else max(image_id) end 
+from image_info
+
+end
 
 
 use [restaurant]

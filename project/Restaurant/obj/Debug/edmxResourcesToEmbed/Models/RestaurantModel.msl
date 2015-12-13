@@ -71,6 +71,7 @@
     <EntitySetMapping Name="Menus">
       <EntityTypeMapping TypeName="RestaurantModel.Menu">
         <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="menu_type_id" ColumnName="menu_type_id" />
           <ScalarProperty Name="Menu_id" ColumnName="Menu_id" />
           <ScalarProperty Name="Menu_name" ColumnName="Menu_name" />
           <ScalarProperty Name="Price" ColumnName="Price" />
@@ -129,6 +130,14 @@
           <ScalarProperty Name="Status_id" ColumnName="Status_id" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Cause_description" ColumnName="Cause_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menu_type">
+      <EntityTypeMapping TypeName="RestaurantModel.Menu_type">
+        <MappingFragment StoreEntitySet="Menu_type">
+          <ScalarProperty Name="type_name" ColumnName="type_name" />
+          <ScalarProperty Name="menu_type_id" ColumnName="menu_type_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

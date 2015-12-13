@@ -44,6 +44,7 @@ namespace Restaurant.Controllers
             Menu menu = repo.GetMenuByID(id);
             menu.Image_info1 = repo.GetImageInfoByID(Convert.ToInt32(menu.Big_Image_id));
             menu.Image_info = repo.GetImageInfoByID(Convert.ToInt32(menu.Small_Image_id));
+            menu.Menu_type = repo.GetMenuTypeByID(Convert.ToInt32(menu.menu_type_id));
 
             if (menu == null)
             {
@@ -75,6 +76,8 @@ namespace Restaurant.Controllers
                 try
                 {
                     file = Request.Files[0];
+                    //System.Collections.Specialized.NameValueCollection postedValues = Request.Form;
+                    //menu.Menu_type.type_name = postedValues["Menutype"];
 
                     if (file != null && file.ContentLength > 0)
                     {
@@ -92,8 +95,8 @@ namespace Restaurant.Controllers
 
                         menu.Image_info1.Name = fileName;
                         menu.Image_info1.Path = target;
+                        
                     }
-
 
                     file = Request.Files[1];
 
@@ -147,6 +150,7 @@ namespace Restaurant.Controllers
             }
             menu.Image_info = repo.GetImageInfoByID(Convert.ToInt32(menu.Big_Image_id));
             menu.Image_info1 = repo.GetImageInfoByID(Convert.ToInt32(menu.Small_Image_id));
+            menu.Menu_type = repo.GetMenuTypeByID(Convert.ToInt32(menu.menu_type_id));
             Session["menu"] = menu;
             return View(menu);
         }
@@ -171,10 +175,14 @@ namespace Restaurant.Controllers
                     menu.Big_Image_id = oldMenu.Big_Image_id;
                     menu.Menu_id = oldMenu.Menu_id;
                     menu.Small_Image_id = oldMenu.Small_Image_id;
+                    menu.menu_type_id = oldMenu.menu_type_id;
                     oldMenu.Image_info.Description = menu.Image_info.Description;
                     oldMenu.Image_info1.Description = menu.Image_info1.Description;
+                    oldMenu.Menu_type.type_name = menu.Menu_type.type_name;
+
                     menu.Image_info = oldMenu.Image_info;
                     menu.Image_info1 = oldMenu.Image_info1;
+                    menu.Menu_type = oldMenu.Menu_type;
                     file = Request.Files[0];
                     if (file != null && file.ContentLength > 0)
                     {
@@ -261,6 +269,7 @@ namespace Restaurant.Controllers
             Menu menu = repo.GetMenuByID(id);
             menu.Image_info1 = repo.GetImageInfoByID(Convert.ToInt32(menu.Big_Image_id));
             menu.Image_info = repo.GetImageInfoByID(Convert.ToInt32(menu.Small_Image_id));
+            menu.Menu_type = repo.GetMenuTypeByID(Convert.ToInt32(menu.menu_type_id));
 
             if (menu == null)
             {
@@ -279,6 +288,7 @@ namespace Restaurant.Controllers
             Menu menu = repo.GetMenuByID(id);
             repo.DeleteImageInfo(Convert.ToInt32(menu.Big_Image_id));
             repo.DeleteImageInfo(Convert.ToInt32(menu.Small_Image_id));
+            repo.DeleteMenuType(Convert.ToInt32(menu.menu_type_id));
             repo.DeleteMenu(id);
             repo.Save();
             return RedirectToAction("MenuIndex");

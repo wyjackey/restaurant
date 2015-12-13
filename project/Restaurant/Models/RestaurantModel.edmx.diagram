@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9d4f8c4f6b0f4a3b81be1789a01efe68" Name="Diagram1">
-        <EntityTypeShape EntityType="RestaurantModel.Address" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantModel.Customer_Info" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantModel.Customer_Invoice" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantModel.Image_info" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantModel.Invoice_Menu" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Address" Width="1.5" PointX="0.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Customer_Info" Width="1.5" PointX="3.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Customer_Invoice" Width="1.5" PointX="3.875" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Image_info" Width="1.5" PointX="2" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Invoice_Menu" Width="1.5" PointX="7.875" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantModel.Menu" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantModel.Pay_Info" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantModel.Staff_info" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantModel.Status_info" Width="1.5" PointX="3" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Pay_Info" Width="1.5" PointX="6.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Staff_info" Width="1.5" PointX="0.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Status_info" Width="1.5" PointX="5.375" PointY="5.5" IsExpanded="true" />
         <AssociationConnector Association="RestaurantModel.FK__Customer___Addre__182C9B23" ManuallyRouted="false" />
         <AssociationConnector Association="RestaurantModel.FK__Staff_inf__Addre__08EA5793" ManuallyRouted="false" />
         <AssociationConnector Association="RestaurantModel.FK__Customer___Custo__173876EA" ManuallyRouted="false" />
@@ -25,6 +25,8 @@
         <AssociationConnector Association="RestaurantModel.FK__Menu__Small_Imag__21B6055D" ManuallyRouted="false" />
         <AssociationConnector Association="RestaurantModel.FK__Invoice_M__Menu___286302EC" ManuallyRouted="false" />
         <AssociationConnector Association="RestaurantModel.fk_Customer_Address" ManuallyRouted="false"  />
+        <EntityTypeShape EntityType="RestaurantModel.Menu_type" Width="1.5" PointX="8.9022581898152175" PointY="15.662404335878046" />
+        <AssociationConnector Association="RestaurantModel.fk_menu_menu_type" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

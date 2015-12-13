@@ -7,6 +7,7 @@
     <EntitySet Name="Image_info" EntityType="RestaurantModel.Store.Image_info" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Invoice_Menu" EntityType="RestaurantModel.Store.Invoice_Menu" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Menu" EntityType="RestaurantModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Menu_type" EntityType="RestaurantModel.Store.Menu_type" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Pay_Info" EntityType="RestaurantModel.Store.Pay_Info" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Staff_info" EntityType="RestaurantModel.Store.Staff_info" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Status_info" EntityType="RestaurantModel.Store.Status_info" store:Type="Tables" Schema="dbo" />
@@ -50,6 +51,14 @@
       <End Role="Address" EntitySet="Address" />
       <End Role="Staff_info" EntitySet="Staff_info" />
     </AssociationSet>
+    <AssociationSet Name="fk_Customer_Address" Association="RestaurantModel.Store.fk_Customer_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Customer_Info" EntitySet="Customer_Info" />
+    </AssociationSet>
+    <AssociationSet Name="fk_menu_menu_type" Association="RestaurantModel.Store.fk_menu_menu_type">
+      <End Role="Menu_type" EntitySet="Menu_type" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Address">
     <Key>
@@ -69,7 +78,7 @@
       <PropertyRef Name="Customer_id" />
     </Key>
     <Property Name="Customer_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="smallint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" />
     <Property Name="Phone1" Type="nvarchar" MaxLength="64" />
     <Property Name="Phone2" Type="nvarchar" MaxLength="64" />
     <Property Name="Phone3" Type="nvarchar" MaxLength="64" />
@@ -123,14 +132,22 @@
     <Property Name="Description" Type="nvarchar" MaxLength="1024" />
     <Property Name="Flavor" Type="nvarchar" MaxLength="64" />
     <Property Name="Rating" Type="nvarchar" MaxLength="64" />
-    <Property Name="Is_available" Type="nvarchar" MaxLength="32" />
-    <Property Name="Is_new" Type="nvarchar" MaxLength="32" />
+    <Property Name="Is_available" Type="bit" />
+    <Property Name="Is_new" Type="bit" />
     <Property Name="Quantity" Type="int" />
-    <Property Name="Is_Activation" Type="nvarchar" MaxLength="32" />
+    <Property Name="Is_Activation" Type="bit" />
     <Property Name="Create_date" Type="datetime" />
     <Property Name="Modified_date" Type="datetime" />
     <Property Name="Small_Image_id" Type="int" />
     <Property Name="Big_Image_id" Type="int" />
+    <Property Name="menu_type_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Menu_type">
+    <Key>
+      <PropertyRef Name="menu_type_id" />
+    </Key>
+    <Property Name="menu_type_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="type_name" Type="nvarchar" MaxLength="512" />
   </EntityType>
   <EntityType Name="Pay_Info">
     <Key>
@@ -290,6 +307,30 @@
       </Principal>
       <Dependent Role="Staff_info">
         <PropertyRef Name="Address_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Customer_Address">
+    <End Role="Address" Type="RestaurantModel.Store.Address" Multiplicity="0..1" />
+    <End Role="Customer_Info" Type="RestaurantModel.Store.Customer_Info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Address_id" />
+      </Principal>
+      <Dependent Role="Customer_Info">
+        <PropertyRef Name="Address_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_menu_menu_type">
+    <End Role="Menu_type" Type="RestaurantModel.Store.Menu_type" Multiplicity="0..1" />
+    <End Role="Menu" Type="RestaurantModel.Store.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu_type">
+        <PropertyRef Name="menu_type_id" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="menu_type_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

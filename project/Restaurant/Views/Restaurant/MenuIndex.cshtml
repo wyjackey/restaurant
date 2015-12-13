@@ -15,6 +15,10 @@
             @Html.DisplayNameFor(model => model.Menu_id)
         </th>*@
         <th>
+            @Html.DisplayNameFor(model => model.Menu_type.type_name)
+        </th>
+        <th></th>
+        <th>
             @Html.DisplayNameFor(model => model.Menu_name)
         </th>
         <th></th>
@@ -34,6 +38,10 @@
 @*        <td>
             @Html.DisplayFor(modelItem => item.Menu_id)
         </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Menu_type.type_name)
+        </td>
+        <td></td>
         <td>
             @Html.DisplayFor(modelItem => item.Menu_name)
         </td>
